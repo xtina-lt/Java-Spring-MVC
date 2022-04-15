@@ -29,13 +29,14 @@ public class BookServ {
 	public List<Book> findBy(String e){
 		return repo.findByTitleContaining(e);
 	}
+
 	public Book save(Book e) {
 		// both saves and updates
 		return repo.save(e);
 	}
 	
 	public Book findBook(int id) {
-		Optional<Book> e = repo.findById(id);
+		Optional<Book> e = Optional.of(repo.findById(id));
 		// OPTIONAL MEANS EITHER EXISTS OR NOT
 		Book result = (e.isPresent()) ? e.get() : null;
 		return result;

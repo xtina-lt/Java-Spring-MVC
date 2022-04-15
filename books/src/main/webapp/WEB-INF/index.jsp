@@ -19,9 +19,18 @@
 	    Books
 	</header>
 	
+	<nav>
+		<a href="/books">Books</a>
+	</nav>
+	
 	<main>
 		<div>
-		<c:out value="${greet}"/>
+		<span class="large">
+			<c:out value="${greet}"/>
+		</span>
+		<br>
+		<br>
+		<img src="https://acegif.com/wp-content/gifs/book-94.gif">
 		</div>
 	</main>
 </body>

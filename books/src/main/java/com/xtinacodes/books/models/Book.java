@@ -45,7 +45,7 @@ public class Book {
 	}
 	
 	// ACCESSORS
-	public int getID() {
+	public int getId() {
 		return id;
 	}
 	public String getTitle() {
@@ -71,6 +71,7 @@ public class Book {
 		System.out.println(updatedAt);
 		System.out.println("********************************" + "\n\n");
 	}
+
 	
 	// MUTATORS
 	public int setID() {

@@ -78,7 +78,7 @@ html{
             height: min-content;
             max-width: 600px;
             /* margin */
-            margin : 1vh auto;
+            margin : 1vh;
             padding: 2vh;
 		    animation: fadeInAnimation ease 3s;
 		    animation-iteration-count: 1;
@@ -112,6 +112,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .large{
 	font-size: 3vh;
+}
+
+.larger{
+	font-size: 10vh;
+	font-weight: bolder;
 }
 
 .emoji{

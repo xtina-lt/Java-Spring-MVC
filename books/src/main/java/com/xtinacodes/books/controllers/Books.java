@@ -27,12 +27,20 @@ public class Books {
 	}
 	
 	@RequestMapping("/books")
-	public List<Book> books(){
-		for (Book i : bs.allBooks()) i.getInfo();
-		return bs.allBooks();
+	public String books(Model m){
+		System.out.println(bs.allBooks());
+		m.addAttribute("output", bs.allBooks());
+		for (Book i: bs.allBooks()) i.getInfo();
+		return "Books.jsp";
 	}
 	
-	@RequestMapping("/book/{whoCares}")
+	@RequestMapping("/book/{id}")
+	public String finding(@PathVariable("id") Integer id, Model m){
+		m.addAttribute("output", bs.findBook(id));
+		return "book.jsp";
+	}
+	
+	@RequestMapping("/bookfind/{whoCares}")
 	public List<Book> bookLook(@PathVariable("whoCares") String whoCares){
 //		System.out.println(whoCares);
 //		System.out.println(whoCares.getClass());
