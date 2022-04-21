@@ -1,6 +1,8 @@
-/* I AM A DOMAIN MODEL
+/* I AM A DOMAIN MODEL CLASS
+ * I AM PART OF THE PERSISTENCE LAYER - > Manage application's data
  * I MODEL A MYSQL TABLE
- * I AM A REPRESENTATION OF DATA
+ * I AM USED AS A REPRESENTATION OF DATA
+ * I AM PART OF THE (M) IN MVC
  */
 package com.xtinacodes.books.models;
 
@@ -27,10 +29,11 @@ public class Book {
 	
 	// CONSTRUCTOR
 	public Book() {
-		
 	}
+	
 	public Book(Map<String, Object> requests) {
-
+		this.title = (@Size(min = 5, max = 100) String) requests.get("title");
+		this.pages = (int) requests.get("pages");
 	}
 	
 	// UPDATES
@@ -74,19 +77,19 @@ public class Book {
 
 	
 	// MUTATORS
-	public int setID() {
-		return this.id;
+	public int setID(int e) {
+		return this.id = e;
 	}
-	public String setTitle() {
-		return this.title;
+	public String setTitle(Object e) {
+		return this.title = (@Size(min = 5, max = 100) String) e;
 	}
-	public int setPages() {
-		return this.pages;
+	public int setPages(Object e) {
+		return this.pages = (int) e;
 	}
-	public Date setCreatedAt() {
-		return this.createdAt;
+	public Date setCreatedAt(Date e) {
+		return this.createdAt = e;
 	}
-	public Date setUpdatedAt() {
-		return this.updatedAt;
+	public Date setUpdatedAt(Date e) {
+		return this.updatedAt = e;
 	}
 }

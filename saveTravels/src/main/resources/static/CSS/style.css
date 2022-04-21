@@ -62,12 +62,12 @@ html{
             width: 99vw;
             margin: 0 auto;
             /* scroll */
-            overflow-y: scroll;
+            overflow: scroll;
             scrollbar-width: none;
-            /* flex */
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
+            display: flex;
+            flex-direction: row;
+           	justify-content: center;
+           	align-items: center;
         }
         main > div{
             /* background and set */
@@ -82,11 +82,6 @@ html{
 		    animation: fadeInAnimation ease 3s;
 		    animation-iteration-count: 1;
 		    animation-fill-mode: forwards;
-		}
-		.imgdiv{
-			background-color: red;
-			width: max-content;
-			max-width: max-content;
 		}
   
 			@keyframes fadeInAnimation {
@@ -118,11 +113,6 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 3vh;
 }
 
-.larger{
-	font-size: 10vh;
-	font-weight: bolder;
-}
-
 .emoji{
     font-size: 20vh;
 }
@@ -136,6 +126,15 @@ h1, h2, h3, h4, h5, h6 {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+img {
+	opacity: 0.5;
+	max-width: 100%;
+	animation: fadeInAnimation ease 7s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	border-radius: 50%;
 }
 
 /* FORMS */

@@ -1,6 +1,7 @@
-/* I AM A SERVICE
- * I AM THE BUSINESS LOGIC OF OUR APPLICATION
- * I WORK ALONGSIDE THE MODEL AND REPO
+/* I AM A SERVICE CLASS
+ * I AM THE SERVICE LAYER
+ * I AM USED AS: BUSINESS LOGIC OF OUR APPLICATION
+ * I AM PART OF THE (M) IN MVC
  */
 package com.xtinacodes.books.services;
 
@@ -30,15 +31,17 @@ public class BookServ {
 		return repo.findByTitleContaining(e);
 	}
 
-	public Book save(Book e) {
-		// both saves and updates
-		return repo.save(e);
-	}
-	
 	public Book findBook(int id) {
 		Optional<Book> e = Optional.of(repo.findById(id));
 		// OPTIONAL MEANS EITHER EXISTS OR NOT
 		Book result = (e.isPresent()) ? e.get() : null;
 		return result;
 	}
+	
+	// MUTATORS
+	public Book save(Book e) {
+		// both saves and updates
+		return repo.save(e);
+	}
+	
 }

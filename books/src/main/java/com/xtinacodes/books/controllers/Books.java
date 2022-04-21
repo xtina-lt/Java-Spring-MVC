@@ -28,9 +28,9 @@ public class Books {
 	
 	@RequestMapping("/books")
 	public String books(Model m){
-		System.out.println(bs.allBooks());
+		//System.out.println(bs.allBooks());
 		m.addAttribute("output", bs.allBooks());
-		for (Book i: bs.allBooks()) i.getInfo();
+		//for (Book i: bs.allBooks()) i.getInfo();
 		return "Books.jsp";
 	}
 	
@@ -49,10 +49,35 @@ public class Books {
 		return bs.findBy(whoCares);
 	}
 	
-	@PostMapping("/process")
-	public Book create(@RequestParam Map<String, Object> requests) {
+	@RequestMapping("/book/new")
+	public String newBook() {
+		return "create.jsp";
+	}
+	
+	@PostMapping("/create")
+	public String create(@RequestParam Map<String, Object> requests) {
+		requests.replace("pages", Integer.parseInt( (String) requests.get("pages") ) );
 		Book e = new Book(requests);
-		return e;
+		bs.save(e);
+		System.out.println(e.getPages());
+		return "redirect:/books";
+	}
+	
+	@RequestMapping("/book/{id}/update")
+	public String bookUpdate(@PathVariable("id") Integer id, Model m) {
+		System.out.println(id);
+		m.addAttribute("output", bs.findBook(id));
+		return "edit.jsp";
+	}
+	
+	@PostMapping("/update")
+	public String edit(@RequestParam Map<String, Object> requests) {
+		requests.replace("id", Integer.parseInt( (String) requests.get("id") ) );
+		Book e = bs.findBook((int) requests.get("id"));
+		e.setPages(requests.get("pages"));
+		e.setTitle(requests.get("title"));
+		bs.save(e);
+		return "redirect:/books";
 	}
 	
 }
