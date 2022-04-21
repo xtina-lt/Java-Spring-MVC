@@ -81,29 +81,29 @@
 			</h1>
 			<!-- FORM -->
 			<form:form action="/trip/create" method="POST" modelAttribute="trip">
-			<!-- name -->
-			<form:label path="name">
-				Name:
-			</form:label>
-			<br>
-			<form:errors path="name"/>
-			<form:input path="name"/>
-			<!-- amount -->
-			<form:label path="amount">
-				Amount:
-			</form:label>
-			<br>
-			<form:errors path="amount"/>
-			<form:input type="number" path="amount" step="0.01"/>
-			<!-- img -->
-			<form:label path="img">
-				Image Url:
-			</form:label>
-			<br>
-			<form:errors path="img"/>
-			<form:input path="img"/>
-			<!-- submit -->
-			<input type="submit" value="Lets Explore!">
+				<!-- name -->
+				<form:label path="name">
+					Name:
+				</form:label>
+				<br>
+				<form:errors path="name"/>
+				<form:input path="name"/>
+				<!-- amount -->
+				<form:label path="amount">
+					Amount:
+				</form:label>
+				<br>
+				<form:errors path="amount"/>
+				<form:input type="number" path="amount" step="0.01"/>
+				<!-- img -->
+				<form:label path="img">
+					Image Url:
+				</form:label>
+				<br>
+				<form:errors path="img"/>
+				<form:input path="img"/>
+				<!-- submit -->
+				<input type="submit" value="Change it up!">
 			</form:form>
 		</div>
 	</main>

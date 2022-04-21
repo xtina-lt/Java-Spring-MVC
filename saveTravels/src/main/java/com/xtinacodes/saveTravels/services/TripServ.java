@@ -32,18 +32,10 @@ public class TripServ {
 		return result;
 	}
 	
-	public Trip create(Trip e) {
+	public Trip save(Trip e) {
 		return ts.save(e);
 	}
 	
-	public void udpate(int id, String n, Double a, String i) {
-		Trip e = ts.findById(id);
-		e.setName(n);
-		e.setAmount(a);
-		e.setUpdatedAt();
-		e.setImg(i);
-		ts.save(e);
-	}
 	public void delete(int e) {
 		ts.deleteById(e);
 	}

@@ -26,37 +26,34 @@ public class Trips {
 	
 	// READ ALL
 	@RequestMapping("/trips")
-	public String readTrips(Model m, @ModelAttribute("trip") Trip e) {
+	public String readTrips(@ModelAttribute("trip") Trip e,
+			Model m) {
 		m.addAttribute("output", ts.selectAll());
 		return "trips.jsp";
 	}
 	
 	// READ ONE
-	@RequestMapping("/trip/{id}")
-	public String readTrip(@PathVariable("id") Integer id, Model m) {
+	@GetMapping("/trip/{id}")
+	public String readTrip(Model m,
+			@PathVariable("id") Integer id) {
 		m.addAttribute("output", ts.selectOne(id));
 		return "trip.jsp";
 	}
 	
 	// CREATE process
 	@PostMapping("/trip/create")
-	public String createTrip(@Valid @ModelAttribute("trip") Trip e,
-			BindingResult error) {
-		if (error.hasErrors())  return "trips.jsp";
-		ts.create(e);
+	public String createTrip(@Valid @ModelAttribute("output") Trip e,
+			BindingResult result) {
+		ts.save(e);
 		return "redirect:/trips";
 	}
 	
-	// UPDATE process
-	@PostMapping("/trip/update")
-	public String updateTrip(@RequestParam(value="name") String name, 
-			@RequestParam(value="amount") Double amount, 
-			@RequestParam(value="id") int id,
-			@RequestParam(value="img") String img) {
-		System.out.println("madeit");
-		ts.udpate(id, name, amount, img);
-		return String.format("redirect:/trip/%d", id);
-	}
+    @PutMapping("/trip/update")
+    public String update(@Valid @ModelAttribute("output") Trip e, 
+    		BindingResult result) {
+    	ts.save(e);
+    	return "redirect:/trips";
+   }
 	
 	// DELETE
 	@RequestMapping("/trip/{id}/delete")

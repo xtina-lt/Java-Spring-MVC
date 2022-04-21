@@ -1,10 +1,11 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page isErrorPage="true"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -81,27 +82,34 @@
 				Update Trip
 			</h1>
 			<!-- FORM -->
-			<form action="/trip/update" method="POST">
-			<!-- id -->
-			<input type="hidden" name="id" value="${output.getId()}">
-			<!-- name -->
-			<label for="name">
-				Name:
-			</label>
-			<input type="text" name="name" value="${output.getName()}" required>
-			<!-- amount -->
-			<label for="amount">
-				Amount:
-			</label>
-			<input type="number" name="amount" value="${output.getAmount()}" step="0.01" required>
-			<!-- img -->
-			<label for="img">
-				Image Url:
-			</label>
-			<input type="text" name="img" value="${output.getImg()}" required>
-			<!-- submit -->
-			<input type="submit" value="Change it up!">
-			</form>
+			<form:form action="/trip/update" method="POST" modelAttribute="output">
+				<input type="hidden" name="_method" value="put">
+				<!-- id -->
+				<form:input type="hidden" path="id"/>
+				<!-- name -->
+				<form:label path="name">
+					Name:
+				</form:label>
+				<br>
+				<form:errors path="name"/>
+				<form:input path="name"/>
+				<!-- amount -->
+				<form:label path="amount">
+					Amount:
+				</form:label>
+				<br>
+				<form:errors path="amount"/>
+				<form:input type="number" path="amount" step="0.01"/>
+				<!-- img -->
+				<form:label path="img">
+					Image Url:
+				</form:label>
+				<br>
+				<form:errors path="img"/>
+				<form:input path="img"/>
+				<!-- submit -->
+				<input type="submit" value="Change it up!">
+			</form:form>
 		</div>
 	</main>
 </body>

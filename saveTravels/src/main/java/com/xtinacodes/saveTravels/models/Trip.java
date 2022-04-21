@@ -80,6 +80,9 @@ public class Trip {
 	}
 	
 	// MUTATORS
+	public void setId(int e) {
+		this.id=e;
+	}
 	public void setName(String e) {
 		this.name = e;
 	}
