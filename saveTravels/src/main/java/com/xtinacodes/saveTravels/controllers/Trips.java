@@ -24,15 +24,26 @@ public class Trips {
 		return "index.jsp";
 	}
 	
-	// READ ALL
+	// READ ALL and SHOW CREATE
 	@RequestMapping("/trips")
-	public String readTrips(@ModelAttribute("trip") Trip e,
+	public String readTrips(@ModelAttribute("input") Trip e,
 			Model m) {
 		m.addAttribute("output", ts.selectAll());
 		return "trips.jsp";
 	}
 	
-	// READ ONE
+	// CREATE process
+	@PostMapping("/trip/create")
+	public String createTrip(@Valid @ModelAttribute("input") Trip e,
+			BindingResult result,
+			Model m) {
+		m.addAttribute("output", ts.selectAll());
+		if (result.hasErrors()) return "trips.jsp";
+		ts.save(e);
+		return "redirect:/trips";
+	}
+	
+	// READ ONE and SHOW UPDATE
 	@GetMapping("/trip/{id}")
 	public String readTrip(Model m,
 			@PathVariable("id") Integer id) {
@@ -40,17 +51,13 @@ public class Trips {
 		return "trip.jsp";
 	}
 	
-	// CREATE process
-	@PostMapping("/trip/create")
-	public String createTrip(@Valid @ModelAttribute("output") Trip e,
-			BindingResult result) {
-		ts.save(e);
-		return "redirect:/trips";
-	}
-	
+	// UPDATE process
     @PutMapping("/trip/update")
-    public String update(@Valid @ModelAttribute("output") Trip e, 
+    public String update(
+    		@Valid @ModelAttribute("output") Trip e, 
     		BindingResult result) {
+    	System.out.println("made it");
+    	if (result.hasErrors()) return "trip.jsp";
     	ts.save(e);
     	return "redirect:/trips";
    }

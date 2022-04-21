@@ -59,8 +59,6 @@
 							<a href="/trip/${i.getId()}">
 							${i.getName()}
 							</a>
-								
-							
 						</td>
 						<td>
 							<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${i.getAmount()} "/>
@@ -80,7 +78,7 @@
 				Create New Trip
 			</h1>
 			<!-- FORM -->
-			<form:form action="/trip/create" method="POST" modelAttribute="trip">
+			<form:form action="/trip/create" method="POST" modelAttribute="input">
 				<!-- name -->
 				<form:label path="name">
 					Name:
