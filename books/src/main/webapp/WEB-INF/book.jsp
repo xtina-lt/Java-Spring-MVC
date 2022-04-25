@@ -54,19 +54,19 @@
 				</tr>
 					<tr>
 					<td>
-						${output.getId()}
+						${output.id}
 					</td>
 					<td>
-						${output.getTitle()}
+						${output.title}
 					</td>
 					<td>
-						${output.getPages()}
+						${output.pages}
 					</td>
 					<td>
-						<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.getCreatedAt() }"/>
+						<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.createdAt }"/>
 					</td>
 					<td>
-						<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.getUpdatedAt() }"/>
+						<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.updatedAt }"/>
 					</td>
 				</tr>
 			</table>

@@ -33,7 +33,7 @@
 	
 	<main>
 		<div>
-			<img src="${output.getImg()}">
+			<img src="${output.img}">
 			<table>
 				<tr>
 					<th>
@@ -57,22 +57,22 @@
 				</tr>
 					<tr>
 					<td>
-						${output.getId()}
+						${output.id}
 					</td>
 					<td>
-						${output.getName()}
+						${output.name}
 					</td>
 					<td>
-					<fmt:formatNumber type="number" minFractionDigits="2" value="${output.getAmount()} "/>
+					<fmt:formatNumber type="number" minFractionDigits="2" value="${output.amount} "/>
 					</td>
 					<td>
-						<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.getCreatedAt() }"/>
+						<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.createdAt }"/>
 					</td>
 					<td>
-						<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.getUpdatedAt() }"/>
+						<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.updatedAt }"/>
 					</td>
 					<td>
-						<a href="/trip/${output.getId()}/delete">Delete</a>
+						<a href="/trip/${output.id}/delete">Delete</a>
 					</td>
 				</tr>
 			</table>

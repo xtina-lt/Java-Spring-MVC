@@ -55,26 +55,26 @@
 				<c:forEach var="i" items="${ output }">
 					<tr>
 						<td>
-							${ i.getId() }
+							${ i.id }
 						</td>
 						<td>
-							<a href="/book/${i.getId()}">
-							${i.getTitle()}
+							<a href="/book/${i.id}">
+							${i.title}
 							</a>
 								
 							
 						</td>
 						<td>
-							${ i.getPages() }
+							${ i.pages }
 						</td>
 						<td>
-							<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ i.getCreatedAt() }"/>
+							<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ i.createdAt }"/>
 						</td>
 						<td>
-							<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ i.getUpdatedAt() }"/>
+							<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ i.updatedAt }"/>
 						</td>
 						<td>
-							<a href="/book/${i.getId()}/update"> EDIT</a> | DELETE
+							<a href="/book/${i.id}/update"> EDIT</a>
 						</td>
 					</tr>
 				</c:forEach>

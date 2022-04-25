@@ -11,9 +11,9 @@ html{
     background-image: 
     linear-gradient(
     to bottom right, 
-    rgba(0, 255, 255, 0.8), 
-    rgba(184, 212, 142, 0.5), 
-    rgba(128, 255, 212, 0.8));
+    rgb(0, 24, 32),
+    rgb(0, 34, 31),
+    rgb(0, 0, 0));
     background-position: center;
     background-size: auto;
     background-repeat: no-repeat;
@@ -30,11 +30,11 @@ html{
         /* font */
         font-family: "Barlow Condensed";
         font-size: 2vh;
-        color: rgba(0, 0, 0, 0.6);
+        color: rgba(202, 202, 202,0.6);
     }
     
         header{
-            background-color: rgba(240, 248, 255, 0.4);
+            background-color: rgba(228, 204, 255, 0.2);
             color: rgba(0, 194, 175, 0.8);
             border-radius: 2vh;
             margin: 1vh auto;
@@ -42,10 +42,20 @@ html{
             font-size: 5vh;
             font-weight: bolder;
             font-family: lobster;
+            animation: glow 1s ease-in-out infinite alternate;
         }
+        	@-webkit-keyframes glow {
+			  from {
+			    text-shadow: 0 0 0.2vh #fff, 0 0 0.4vh #fff, 0 0 0.6vh rgb(228, 204, 255), 0 0 0.8vh rgb(228, 204, 255), 0 0 0 1vh rgb(228, 204, 255);
+			  }
+			  
+			  to {
+			    text-shadow: 0 0 0.4vh #fff, 0 0 0.6vh rgb(223, 255, 251), 0 0 0.8vh rgb(223, 255, 251), 0 0 1vh rgb(223, 255, 251), 0 0 1.2vh rgb(223, 255, 251);
+			  }
+			}
         
         nav{
-        	background-color: rgba(240, 248, 255, 0.4);
+        	background-color: rgba(228, 204, 255, 0.2);
         	color: rgba(0, 194, 175, 0.8);
         	border-radius: 2vh;
         	margin: 1vh auto;
@@ -55,8 +65,6 @@ html{
         }
 
         main{
-            /* styling*/
-            color: rgba(0, 0, 0, 0.6); /* top: left right, bottom: left, right */
             /* size */
             height: 84vh;
             width: 99vw;
@@ -65,24 +73,26 @@ html{
             overflow: scroll;
             scrollbar-width: none;
             display: flex;
-            flex-direction: row;
-           	justify-content: center;
-           	align-items: center;
+            align-items: center;
+            justify-content: space-evenly;
         }
+
         main > div{
             /* background and set */
-            background-color: rgba(240, 248, 255, 0.4);
+            background-color: rgba(228, 204, 255, 0.2);
             border-radius: 3vh;
-            /* width height */
-            height: min-content;
-            max-width: max-content;
+            /*height width*/
+			height: max-content;
+			width: fit-content;
             /* margin */
-            margin : 1vh;
-            padding: 2vh;
+            margin : 1vh auto;
+            padding: 1vh;
 		    animation: fadeInAnimation ease 3s;
 		    animation-iteration-count: 1;
 		    animation-fill-mode: forwards;
 		}
+
+
   
 			@keyframes fadeInAnimation {
 			    0% {
@@ -93,7 +103,7 @@ html{
 			     }
 			}
 
-
+	
 
 /*HEADERS*/
 h1, h2, h3, h4, h5, h6 {
@@ -130,17 +140,18 @@ a {
 
 img {
 	opacity: 0.5;
-	max-width: 100%;
-	animation: fadeInAnimation ease 7s;
+	max-width: 30vw;
+	animation: fadeInAnimation ease 10s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
-	border-radius: 50%;
+	border-radius: 10% / 50%;
+	filter: grayscale(85%);
 }
 
 /* FORMS */
 input, select, textarea, select:focus{
     /* background and border */
-    background-color: rgba(240, 248, 255, 0.6);
+    background-color: rgba(204, 255, 244, 0.2);
     border: none;
     border-radius: 2vh;
     outline: none;
@@ -160,13 +171,13 @@ input, select, textarea, select:focus{
 table{
     border-collapse: collapse;
     box-sizing: border-box;
-    background-color: rgba(187, 228, 224, 0.3);
+    background-color: rgba(204, 255, 244, 0.2);
     border: none;
-    /* widht */
-    max-width: inherit;
     /* padding and margin */
     padding: 1vh;
     margin: 1vh auto;
+    table-layout: fixed;
+    word-wrap:break-word;
 }
 
     th {
@@ -186,5 +197,27 @@ table{
     }
 
     tr:hover {
-        background-color: rgba(240, 248, 255, 0.5);
+        background-color: rgba(228, 204, 255, 0.2);
     }
+    
+ul > li{
+	margin: 2vh;
+}
+
+/* Half is 800px */
+@media only screen and (max-width: 1200px) {
+	.block {
+    	display: block;
+  	}
+}
+
+/* Phone is 600px - Tablet 850px */
+@media only screen and (max-width: 1000px) {
+	img{
+		max-width: 98vw;
+		max-width: 600px;
+	}
+	main{
+		display: block;
+	}
+}

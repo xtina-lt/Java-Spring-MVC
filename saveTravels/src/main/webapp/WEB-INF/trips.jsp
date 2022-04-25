@@ -56,18 +56,18 @@
 							${ i.getId() }
 						</td>
 						<td>
-							<a href="/trip/${i.getId()}">
+							<a href="/trip/${i.id}">
 							${i.getName()}
 							</a>
 						</td>
 						<td>
-							<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${i.getAmount()} "/>
+							<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${i.amount} "/>
 						</td>
 						<td>
-							<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ i.getCreatedAt() }"/>
+							<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ i.createdAt }"/>
 						</td>
 						<td>
-							<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ i.getUpdatedAt() }"/>
+							<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ i.updatedAt }"/>
 						</td>
 					</tr>
 				</c:forEach>
