@@ -1,4 +1,4 @@
-<%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
+<%@ taglib prefix="rapid" uri="http://www.rapid-framework.org.cn/rapid"  %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ page isErrorPage="true"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
@@ -18,9 +18,24 @@
     <a href="/dojos">
         Dojos
     </a> 
+    <a href="/ninjas">
+    	Ninjas
+    </a>
 </rapid:override>  
 
 <rapid:override name="main">  
+    <div>
+    	<img src="https://y.yarn.co/03e9bd0e-a55e-4692-ab9f-05fc0d512b88_text.gif">
+		<br>
+		<br>
+		One <i>Address</i> is connected by a <span class="accent">One-to-One Relationship</span>.
+		<br>
+		<br>
+		The relationships are with both <i>Ninjas</i> and <i>Dojos</i>.
+    	<br>
+    	<br>
+    	The <span class="accent">foreign key</span> in both tables is <span class="accent">address_id</span>.
+   </div>
    <div>
      	<table>
      		<tr>
@@ -113,18 +128,6 @@
 			<input type="submit" value="Change Location">
 		</form:form>
     </div>
-    <div>
-    	<img src="https://y.yarn.co/03e9bd0e-a55e-4692-ab9f-05fc0d512b88_text.gif">
-		<br>
-		<br>
-		
-		
-		One address is connected by a <span class="accent">One-to-One Relationship</span>.
-		<br>
-		The relationships are with both Ninjas and Dojos.
-    	<br>
-    	<br>
-   </div>
 </rapid:override>  
 
 <%@ include file="../base.jsp"%>

@@ -1,6 +1,5 @@
 package com.xtinacodes.dojosninjas.models;
 import java.util.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,9 +26,16 @@ public class Address {
 	@Min(value=501, message="try longer zip")
 	private int zip;
 	
-
+	
+	// ONE TO ONE
+	// dojo
 	@OneToOne(mappedBy="address", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private Dojo dojo;
+	
+	// ONE TO ONE
+	// ninja
+	@OneToOne(mappedBy="address", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private Ninja ninja;
 	
 	// creatd_at
 	@Column(updatable=false)

@@ -2,25 +2,33 @@
 package com.xtinacodes.dojosninjas.controllers;
 
 import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import com.xtinacodes.dojosninjas.models.Address;
-import com.xtinacodes.dojosninjas.services.AddressServ;
+import com.xtinacodes.dojosninjas.models.*;
+import com.xtinacodes.dojosninjas.services.*;
 
 @Controller
 public class Addresses {
 	
-	private final AddressServ serv;
-	public Addresses(AddressServ e) {
-		this.serv = e;
-	}
+	@Autowired
+	private AddressServ serv;
+	
 	// HOME
 	@RequestMapping("")
 	public String index() {
 		return "index.jsp";
 	}
+	
+	// ERD
+	@RequestMapping("/erd")
+		public String erd() {
+			return "erd.jsp";
+	}
+	
 
 	// READ ALL and SHOW CREATE
     @RequestMapping("/addresses")
@@ -37,8 +45,7 @@ public class Addresses {
     	System.out.println("assist");
     	m.addAttribute("output", serv.selectAll());
 		if (result.hasErrors()) return "/addresses/addresses.jsp";
-		e.getInfo();
-		//serv.save(e);
+		serv.save(e);
     	return "redirect:/addresses";
     }
     

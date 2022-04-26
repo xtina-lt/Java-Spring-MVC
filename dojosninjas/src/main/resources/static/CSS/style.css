@@ -63,10 +63,16 @@ html{
             font-size: 2vh;
             font-family: lobster;  	
         }
+        	nav > a {
+				margin-left: 2vh;
+				margin-right: 2vh;
+			}
+
 
         main{
             /* size */
             height: 84vh;
+            max-height: 84vh;
             width: 99vw;
             margin: 0 auto;
             /* scroll */
@@ -83,6 +89,7 @@ html{
             border-radius: 3vh;
             /*height width*/
 			height: max-content;
+			max-height: 83vh;
 			width: fit-content;
             /* margin */
             margin : 1vh auto;
@@ -147,6 +154,11 @@ img {
 	border-radius: 10% / 50%;
 	filter: grayscale(85%);
 }
+	#erd{
+		max-width: min-content;
+		max-height: 83vh;
+		filter: grayscale(50%);
+	}
 
 /* FORMS */
 input, select, textarea, select:focus{
@@ -175,7 +187,7 @@ table{
     border: none;
     /* padding and margin */
     padding: 1vh;
-    margin: 1vh auto;
+    margin: 1vh;
     table-layout: fixed;
     word-wrap:break-word;
 }

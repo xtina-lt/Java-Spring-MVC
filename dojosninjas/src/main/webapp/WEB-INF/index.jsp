@@ -1,4 +1,4 @@
-<%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
+<%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %> 
 
 
 <rapid:override name="header">  
@@ -12,6 +12,9 @@
     <a href="/dojos">
         Dojos
     </a> 
+    <a href="/ninjas">
+    	Ninjas
+    </a>
 </rapid:override>  
 
 <rapid:override name="main">  
@@ -35,6 +38,27 @@
 	    	</li>
 	    	<li>
 	    		Implement a <span class="accent">foreign-key relationship</span> by assigning instances of a class as a member variable.
+	    	</li>
+	    </ul>
+	    <br>
+	    <br>
+	    <h2>
+	    	Project Links
+	    </h2>
+	    <ul>
+	    	<li>
+	    		<a href="/erd" target="#">
+	    			<span class="accent">
+	    				Entity Relationship Diagram (ERD)
+	    			</span>
+	    		</a>
+	    	</li>
+	    	<li>
+	    		<a href="https://github.com/xtina-lt/Java-Spring-MVC/tree/main/dojosninjas" target="#">
+	    			<span class="accent">
+	    				Code / Brilliant Brain
+	    			</span>
+	    		</a>
 	    	</li>
 	    </ul>
     </div>

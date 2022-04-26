@@ -5,8 +5,8 @@ import javax.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="dojos")
-public class Dojo {
+@Table(name="ninjas")
+public class Ninja {
 	
 	// CLASS VARIABLES
 	// id
@@ -17,14 +17,15 @@ public class Dojo {
 	@Size(min = 3, max = 45, message="Try a little longer..")
 	private String name;
 
+	// MANY TO ONE
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="dojo_id")
+    private Dojo dojo;
+    
 	// ONE TO ONE
     @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="address_id")
     private Address address;
-    
-    // ONE TO MANY
-    @OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
-    private List<Ninja> ninjas;
 
 	
 	@Column(updatable=false)
@@ -46,8 +47,12 @@ public class Dojo {
 
 	
 	// CONSTRUCTORS
-	public Dojo() {}
-	
+	public Ninja() {}
+	public Ninja(String n, Dojo d, Address a) {
+		this.name = n;
+		this.dojo = d;
+		this.address = a;
+	}
 	
 	// ACCESSORS
 	public int getId() {
@@ -63,16 +68,17 @@ public class Dojo {
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
+	public Dojo getDojo() {
+		return dojo;
+	}
 	public Address getAddress() {
 		return address;
 	}
 	public void getInfo() {
 		System.out.println("id: " + id);
 		System.out.println("name: " + name);
-		System.out.println("street: " + address.getStreet());
-		System.out.printf("%s , %s\n", address.getCity(), address.getState());
-		System.out.printf("Zip: %d\n", address.getZip());
-		
+		System.out.println("dojo: " + dojo.getName());
+		address.getInfo();
 	}
 	
 	// MUTATORS
@@ -82,14 +88,16 @@ public class Dojo {
 	public String setName(String e) {
 		return this.name = e;
 	}	
-
+	public Dojo setDojo(Dojo e) {
+		return this.dojo = e;
+	}
+	public Address setAddress(Address e) {
+		return this.address = e;
+	}
 	public Date setCreatedAt(Date e) {
 		return this.createdAt = e;
 	}
 	public Date setUpdatedAt(Date e) {
 		return this.updatedAt = e;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 }

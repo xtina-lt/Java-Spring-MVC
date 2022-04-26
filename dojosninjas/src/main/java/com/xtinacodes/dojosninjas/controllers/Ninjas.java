@@ -1,6 +1,8 @@
 
 package com.xtinacodes.dojosninjas.controllers;
 
+import java.awt.datatransfer.SystemFlavorMap;
+
 import javax.validation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,41 +15,45 @@ import com.xtinacodes.dojosninjas.services.*;
 
 
 @Controller
-public class Dojos {
+public class Ninjas {
 	
 	// Services
 	@Autowired
 	private AddressServ aserv;
 	@Autowired
-	private DojoServ serv;
+	private DojoServ dserv;
+	@Autowired
+	private NinjaServ serv;
 	
 
 	// READ ALL and SHOW CREATE
-    @RequestMapping("/dojos")
-    public String dojosRead(Model m, 
-    		@ModelAttribute("input") Dojo e
+    @RequestMapping("/ninjas")
+    public String ninjasRead(Model m, 
+    		@ModelAttribute("input") Ninja e
     		) {
         m.addAttribute("output", serv.selectAll());
-        return "/dojos/dojos.jsp";
+        m.addAttribute("dojos", dserv.selectAll());
+        return "/ninjas/ninjas.jsp";
     }
     
     // PROCESS CREATE
-    @PostMapping("/dojo/create")
-    public String dojoCreate( Model m,
-    		@Valid @ModelAttribute("input") Dojo e,
+    @PostMapping("/ninja/create")
+    public String ninjaCreate( Model m,
+    		@Valid @ModelAttribute("input") Ninja e,
     		BindingResult result) {
     	m.addAttribute("output", serv.selectAll());
+    	m.addAttribute("dojos", dserv.selectAll());
     	
 		try {
 			Address a = aserv.save(new Address(e.getAddress()));
 			e.setAddress(a);
 			serv.save(e);
-			return("redirect:/dojos");
+			return("redirect:/ninjas");
 	      } catch (ConstraintViolationException ahh){
 			for (ConstraintViolation<?> i : ahh.getConstraintViolations()) {
 			result.rejectValue(String.format("address.%s", i.getPropertyPath().toString()), "error.dojo", i.getMessage());
 			}
-			return "/dojos/dojos.jsp";
+			return "/ninjas/ninjas.jsp";
 	      }
 
     } //route
@@ -55,40 +61,37 @@ public class Dojos {
     
     
     // SHOW ONE and SHOW UPDATE
-    @GetMapping("/dojo/{id}")
-    public String dojoRead( @PathVariable("id") Integer id,
+    @GetMapping("/ninja/{id}")
+    public String ninjaRead( @PathVariable("id") Integer id,
     		Model m) {
     	m.addAttribute("output", serv.selectOne(id));
-    	m.addAttribute("addresses", aserv.selectAll());
-    	return "/dojos/dojo.jsp";
+    	m.addAttribute("dojos", dserv.selectAll());
+    	return "/ninjas/ninja.jsp";
     }
     
     // PROCESS UPDATE
-    @PutMapping("/dojo/update")
-    public String dojoUpdate( 
-    		@Valid @ModelAttribute("output") Dojo e,
+    @PutMapping("/ninja/update")
+    public String ninjaUpdate( 
+    		@Valid @ModelAttribute("output") Ninja e,
     		BindingResult result,
     		Model m) {
-    	m.addAttribute("addresses", aserv.selectAll());
-    	
+    	m.addAttribute("dojos", dserv.selectAll());
+
+
 		try {
-			Address a = aserv.save(e.getAddress());
+			Address a = aserv.save(new Address(e.getAddress()));
 			e.setAddress(a);
 			serv.save(e);
-			return("redirect:/dojos");
+			return("redirect:/ninjas");
 	      } catch (ConstraintViolationException ahh){
 			for (ConstraintViolation<?> i : ahh.getConstraintViolations()) {
 			result.rejectValue(String.format("address.%s", i.getPropertyPath().toString()), "error.dojo", i.getMessage());
 			}
-			return "/dojos/dojos.jsp";
+			return "/ninjas/ninja.jsp";
 	      }
     }
-    
-    // DELETE
-    @RequestMapping("/dojo/{id}/delete")
-    public String dojoDelete(@PathVariable("id") int id) {
-    	serv.delete(id);
-    	return "redirect:/dojos";
-    }
+
 
 }
+
+

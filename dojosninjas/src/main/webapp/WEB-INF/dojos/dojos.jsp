@@ -15,13 +15,16 @@
     <a href="/addresses">
     	Addresses
     </a>
+    <a href="/ninjas">
+    	Ninjas
+    </a>
 </rapid:override> 
 
 <rapid:override name="main"> 
 	<div>
     	<img src="https://i.pinimg.com/originals/2a/14/56/2a1456f6895cb3bb029b4cba034b7682.gif">
 		<br>
-		The Dojos database table is connected to the Addresses table as a <span class="accent">One-to-One Relationship</span>.
+		The <i>Dojos database table</i> is connected to the Addresses table as a <span class="accent">One-to-One Relationship</span>.
 		<br>
    		<h2>
    			Add Dojo..
@@ -80,7 +83,7 @@
      				Location
      			</th>
      			<th>
-     				Created
+     				Updated
      			</th>
      			<th>
      				Created
@@ -95,7 +98,9 @@
 	     				${i.id}
 	     			</td>
 	     			<td>
-	     				${i.name}
+	     				<a href="/dojo/${i.id}">
+	     					${i.name}
+	     				</a>
 	     			</td>
 	     			<td>
 	     				${i.address.city}, ${i.address.state}

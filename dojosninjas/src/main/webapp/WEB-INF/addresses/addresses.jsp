@@ -16,6 +16,9 @@
     <a href="/dojos">
         Dojos
     </a> 
+    <a href="/ninjas">
+    	Ninjas
+    </a>
 </rapid:override>
 
 <rapid:override name="main"> 
@@ -23,9 +26,9 @@
     	<img src="https://y.yarn.co/03e9bd0e-a55e-4692-ab9f-05fc0d512b88_text.gif">
 		<br>
 		<br>
-		The addresses db table is connected to two <span class="accent">One-to-One Relationships</span>.
+		The <i>Addresses database table</i> is connected to two <span class="accent">One-to-One Relationships</span>.
 		<br>
-		The relationships are with both Ninjas and Dojos.
+		The relationships are with both <i>Ninjas</i> and <i>Dojos</i>.
     	<br>
     	<br>
    		<h2>
@@ -73,7 +76,7 @@
      				ID
      			</th>
      			<th>
-     				Street
+					Street
      			</th>
      			<th>
      				City
@@ -100,7 +103,9 @@
 	     				${i.id}
 	     			</td>
 	     			<td>
-	     				${i.street}
+	     			   <a href="/address/${i.id}">
+     						${i.street}
+     					</a>
 	     			</td>
 	     			<td>
 	     				${i.city}

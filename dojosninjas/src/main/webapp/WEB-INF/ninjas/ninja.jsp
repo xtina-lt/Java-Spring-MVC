@@ -6,7 +6,7 @@
 
 
 <rapid:override name="header">
-    Dojo
+    Ninja
 </rapid:override>
 
 <rapid:override name="nav">  
@@ -25,14 +25,20 @@
 </rapid:override> 
 
 <rapid:override name="main">  
-    <div>
-    	<img src="https://i.pinimg.com/originals/2a/14/56/2a1456f6895cb3bb029b4cba034b7682.gif">
+<div>
+        <img src="https://c.tenor.com/6jWluq4U4gQAAAAi/stitch-ninja.gif">
 		<br>
 		<br>
-		One <i>Dojo</i> is connected by a <span class="accent">One-to-One Relationship</span> to an <i>Address</i>.
-	</div>
-    <div>
-     	<table>
+		<b>One</b> <i>Ninja</i> is connected to <b>one</b> <i>Addresses</i> table as a <span class="accent">One-to-One Relationship</span>.
+		<br>
+		<br>
+		It is also connected to the <i>Dojos</i> table as a <span class="accent">One-to-Many Relationship</span>.
+		<br>
+		<br>
+		There can be <b>many</b> <i>Ninjas</i> in <b>one</b> <i>Dojo</i>.
+		<br>
+		<br>
+		     	<table>
      		<tr>
      			<th>
      				ID
@@ -51,6 +57,9 @@
      			</th>
      			<th>
      				Zip
+     			</th>
+     			<th>
+     				Dojo
      			</th>
      			<th>
      				Created
@@ -79,6 +88,9 @@
      				${output.address.state}
      			</td>
      			<td>
+     				${output.dojo.name}
+     			</td>
+     			<td>
      				${output.address.zip}
      			</td>
      			<td>
@@ -94,12 +106,13 @@
      			</td>
      		</tr>
      	</table>
-     	<br>
+	</div>
+    <div>
      	<h2>
    			Update 
    		</h2>
     	<!-- FORM -->
-		<form:form action="/dojo/update" method="POST" modelAttribute="output">
+		<form:form action="/ninja/update" method="POST" modelAttribute="output">
 		<input type="hidden" name="_method" value="put">
 			<!-- id -->
 			<form:input type="hidden" path="id"/>
@@ -109,13 +122,8 @@
 			<br>
 			<form:errors path="name"/>
 			<form:input path="name"/>
-			<!-- address id -->
-			<form:input type="hidden" path="address.id"/>
-			<!-- address -->
-			<form:label path="address">
-				Address:
-			</form:label>
 			<!-- street -->
+			<form:input type="hidden" path="address.id"/>
 			<form:label path="address.street">
 				Street:
 			</form:label>
@@ -143,6 +151,17 @@
 			<br>
 			<form:errors path="address.zip"/>
 			<form:input type="number" path="address.zip" min="00501"/>
+			<!-- dojo -->
+			<form:label path="dojo">
+				Dojo:
+			</form:label>
+			<form:select path="dojo">
+        		<c:forEach var="d" items="${dojos}">
+	            	<form:option value="${d.id}" path="dojo">
+	                	${d.name}
+	            	</form:option>
+            	</c:forEach>
+            </form:select>
 			<!-- submit -->
 			<input type="submit" value="Change Location">
 		</form:form>
