@@ -1,8 +1,6 @@
 
 package com.xtinacodes.dojosninjas.controllers;
 
-import java.awt.datatransfer.SystemFlavorMap;
-
 import javax.validation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,6 +88,14 @@ public class Ninjas {
 			return "/ninjas/ninja.jsp";
 	      }
     }
+    
+    // DELETE
+    @RequestMapping("/ninja/{id}/delete")
+    public String ninjaDelete(@PathVariable("id") int id) {
+    	serv.delete(id);
+    	return "redirect:/ninjas";
+    }
+
 
 
 }

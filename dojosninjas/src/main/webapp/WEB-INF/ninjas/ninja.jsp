@@ -100,7 +100,7 @@
      				<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.updatedAt }"/>
      			</td>
      			<td>
-     				<a href="/dojo/${output.id}/delete">
+     				<a href="/ninja/${output.id}/delete">
      					Delete
      				</a>
      			</td>

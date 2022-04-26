@@ -1,5 +1,6 @@
 
 package com.xtinacodes.dojosninjas.services;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 
 import com.xtinacodes.dojosninjas.models.Dojo;
@@ -9,6 +10,8 @@ import java.util.*;
 @Service
 public class DojoServ {
     
+	@Autowired
+	private AddressServ aserv;
     private final DojoRepo r;
     
     public DojoServ(DojoRepo e) {
@@ -30,7 +33,8 @@ public class DojoServ {
     }
     
     public void delete(int e) {
-        r.deleteById(e);
+    	Dojo d = selectOne(e);
+    	aserv.delete(d.getAddress().getId());
     }
 }
 

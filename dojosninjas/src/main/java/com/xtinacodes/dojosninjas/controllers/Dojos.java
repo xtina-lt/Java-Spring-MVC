@@ -65,14 +65,15 @@ public class Dojos {
     
     // PROCESS UPDATE
     @PutMapping("/dojo/update")
-    public String dojoUpdate( 
+    public String ninjaUpdate( 
     		@Valid @ModelAttribute("output") Dojo e,
     		BindingResult result,
     		Model m) {
-    	m.addAttribute("addresses", aserv.selectAll());
-    	
+    	m.addAttribute("dojos", serv.selectAll());
+
+
 		try {
-			Address a = aserv.save(e.getAddress());
+			Address a = aserv.save(new Address(e.getAddress()));
 			e.setAddress(a);
 			serv.save(e);
 			return("redirect:/dojos");
@@ -80,9 +81,10 @@ public class Dojos {
 			for (ConstraintViolation<?> i : ahh.getConstraintViolations()) {
 			result.rejectValue(String.format("address.%s", i.getPropertyPath().toString()), "error.dojo", i.getMessage());
 			}
-			return "/dojos/dojos.jsp";
+			return "/dojos/dojo.jsp";
 	      }
     }
+
     
     // DELETE
     @RequestMapping("/dojo/{id}/delete")
