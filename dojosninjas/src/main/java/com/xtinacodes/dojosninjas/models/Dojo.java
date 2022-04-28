@@ -1,5 +1,6 @@
 package com.xtinacodes.dojosninjas.models;
 import java.util.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;

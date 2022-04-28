@@ -72,7 +72,9 @@
 						<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${ output.updatedAt }"/>
 					</td>
 					<td>
-						<a href="/trip/${output.id}/delete">Delete</a>
+						<form:form action="/trip/${output.id}/delete" method="delete">
+							<input type="submit" value="Delete">
+						</form:form>
 					</td>
 				</tr>
 			</table>
@@ -82,8 +84,7 @@
 				Update Trip
 			</h1>
 			<!-- FORM -->
-			<form:form action="/trip/update" method="POST" modelAttribute="output">
-				<input type="hidden" name="_method" value="put">
+			<form:form action="/trip/update" method="PUT" modelAttribute="output">
 				<!-- id -->
 				<form:input type="hidden" path="id"/>
 				<!-- name -->

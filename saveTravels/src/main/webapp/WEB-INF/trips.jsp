@@ -53,11 +53,11 @@
 				<c:forEach var="i" items="${ output }">
 					<tr>
 						<td>
-							${ i.getId() }
+							${ i.id }
 						</td>
 						<td>
 							<a href="/trip/${i.id}">
-							${i.getName()}
+							${i.name}
 							</a>
 						</td>
 						<td>

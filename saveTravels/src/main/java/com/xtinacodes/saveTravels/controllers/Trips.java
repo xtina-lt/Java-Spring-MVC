@@ -63,7 +63,7 @@ public class Trips {
    }
 	
 	// DELETE
-	@RequestMapping("/trip/{id}/delete")
+	@DeleteMapping("/trip/{id}/delete")
 	public String deleteTrip(@PathVariable("id") int id){
 		ts.delete(id);
 		return "redirect:/trips";

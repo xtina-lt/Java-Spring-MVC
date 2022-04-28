@@ -1,7 +1,7 @@
 package com.xtinacodes.saveTravels.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
-
 import com.xtinacodes.saveTravels.models.Trip;
 import com.xtinacodes.saveTravels.repositories.TripRepo;
 
@@ -10,33 +10,23 @@ import java.util.*;
 @Service
 public class TripServ {
 	
-	private final TripRepo ts;
-	
-	public TripServ(TripRepo e) {
-		this.ts = e;
-	}
+	@Autowired
+	private TripRepo repo;
 	
 	public List<Trip> selectAll(){
-		return ts.findAll();
+		return repo.findAll();
 	}
 	
-	public Trip selectOne(int e) {
-//		System.out.println("******");
-//		Trip result = ts.findById(e);
-//		System.out.println(result);
-//		String y = (result == null) ? "null" : "notnull";
-//		System.out.println(y);
-//		return result;
-		Optional<Trip> o = Optional.of(ts.findById(e));
-		Trip result = (o.isPresent()) ? o.get() : null;
-		return result;
+	public Trip selectOne(int id) {
+		Optional<Trip> e = Optional.of(repo.findById(id));
+		return e.orElse(null);
 	}
 	
 	public Trip save(Trip e) {
-		return ts.save(e);
+		return repo.save(e);
 	}
 	
 	public void delete(int e) {
-		ts.deleteById(e);
+		repo.deleteById(e);
 	}
 }
