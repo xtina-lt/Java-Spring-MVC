@@ -28,7 +28,6 @@ public class Book {
 	
 	// IMG
 	@NotEmpty(message="Gimme a link!")
-	@Size(min=2, max=100, message="Try a longer link")
 	private String img;
 	
 	// AUTHOR
@@ -85,6 +84,12 @@ public class Book {
 	public String getImg() {
 		return img;
 	}
+	public Author getAuthor() {
+		return author;
+	}
+	public User getUser() {
+		return user;
+	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -104,15 +109,22 @@ public class Book {
 		return this.id = e;
 	}
 	public String setTitle(String e) {
-	      StringBuilder sb = new StringBuilder(e);
-	      sb.setCharAt(0, Character.toTitleCase(sb.charAt(0)));
-	      return this.title = sb.toString();
+		StringBuilder sb = new StringBuilder(e);
+		sb.setCharAt(0, Character.toTitleCase(sb.charAt(0)));
+		return this.title=sb.toString();
 	}
+	
 	public String setDescription(String e) {
 		return this.description = e;
 	}
 	public String setImg(String e) {
 		return this.img = e;
+	}
+	public Author setAuthor(Author e) {
+		return this.author = e;
+	}
+	public User setUser(User e) {
+		return this.user = e;
 	}
 	public Date setCreatedAt() {
 		return this.createdAt;

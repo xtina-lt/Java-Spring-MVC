@@ -1,13 +1,24 @@
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %> 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <rapid:override name="header">  
     Book Club 
 </rapid:override>  
 
 <rapid:override name="nav">  
-	<a href="/loginOreg">
-		Login
+	<c:if test="${sessionScope.id == null}">
+		<a href="/logoreg">
+			Login
+		</a>
+	</c:if>
+	<c:if test="${sessionScope.id != null}">
+		<a href="/logoreg">
+			Logout
+		</a>
+	</c:if>
+
+	<a href="/bookshelf">
+		BookShelf
 	</a>
 </rapid:override>  
 
@@ -46,14 +57,14 @@
 	    </h2>
 	    <ul>
 	    	<li>
-	    		<a href="/erd" target="#">
+	    		<a href="/erd">
 	    			<span class="accent">
 	    				Entity Relationship Diagram (ERD)
 	    			</span>
 	    		</a>
 	    	</li>
 	    	<li>
-	    		<a href="https://github.com/xtina-lt/Java-Spring-MVC/tree/main/dojosninjas" target="#">
+	    		<a href="https://github.com/xtina-lt/Java-Spring-MVC/tree/main/bookclub" target="#">
 	    			<span class="accent">
 	    				Code / Brilliant Brain
 	    			</span>

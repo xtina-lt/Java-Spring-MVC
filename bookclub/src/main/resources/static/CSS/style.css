@@ -92,12 +92,13 @@ html{
             border-radius: 3vh;
             /*height width*/
 			height: max-content;
+			max-width: fit-content;
 			max-height: 83vh;
 			overflow-y: scroll;
 			scrollbar-width: none;
             /* margin */
             margin : 1vh auto;
-            padding: 1vh;
+            padding: 1.5vh;
 		    animation: fadeInAnimation ease 3s;
 		    animation-iteration-count: 1;
 		    animation-fill-mode: forwards;
@@ -151,11 +152,13 @@ a {
 
 img {
 	filter: opacity(75%);
+	mix-blend-mode: lighten;
 	max-width: 30vw;
+	max-height: 40vh;
 	animation: fadeInAnimation ease 10s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
-	border-radius: 50%;
+	border-radius: 25% 10%;
 }
 	#erd{
 		max-width: min-content;
@@ -195,7 +198,7 @@ table{
     border: none;
     /* padding and margin */
     padding: 1vh;
-    margin: 1vh;
+    margin: 1vh auto;
     table-layout: fixed;
     word-wrap:break-word;
 }
@@ -227,8 +230,8 @@ ul {
 			margin: 2vh;
 		}
 
-/* Half and Tablet */
-@media only screen and (max-width: 860px) {
+/*Tablet 800 Half 1000 */
+@media only screen and (max-width: 1000px) {
 	main{
 		display: block;
 	}

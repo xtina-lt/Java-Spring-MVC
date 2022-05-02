@@ -2,7 +2,6 @@ package com.xtinacodes.bookclub.controllers;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +23,7 @@ public class Users {
 	
 	// HOME
 	@RequestMapping("")
-	public String index() {
+	public String index(HttpSession session) {
 		return "index.jsp";
 	}
 	
@@ -35,7 +34,7 @@ public class Users {
 	}
 	
 	// LOGIN REG
-	@RequestMapping("/loginOreg")
+	@RequestMapping("/logoreg")
 	public String test(Model m,
 			@ModelAttribute("u") User u,
 			@ModelAttribute("l") LoginUser l) {
@@ -56,9 +55,8 @@ public class Users {
 			return "log.jsp";
 		}
 		
-		session.setAttribute("user", u.getId());
-		System.out.println("session: " + session);
-		
+		session.setAttribute("id", u.getId());
+	
 		return "redirect:/";
 	}
 	
@@ -78,10 +76,15 @@ public class Users {
 		}
 		
 		// 3) save to session
-		session.setAttribute("user", e.getId());
-		System.out.println("session: " + session.getAttribute("user"));
+		session.setAttribute("id", e.getId());
 		return "redirect:/";
 	}
 	
+	// LOGOUT
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 	
 }

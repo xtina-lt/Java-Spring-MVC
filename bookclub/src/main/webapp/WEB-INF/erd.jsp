@@ -9,7 +9,7 @@
 	<a href="">
 		Home
 	</a>
-	<a href="/loginOreg">
+	<a href="/logoreg">
 		Login
 	</a>
 </rapid:override>  

@@ -87,7 +87,7 @@ public class Dojos {
 
     
     // DELETE
-    @RequestMapping("/dojo/{id}/delete")
+    @DeleteMapping("/dojo/{id}/delete")
     public String dojoDelete(@PathVariable("id") int id) {
     	serv.delete(id);
     	return "redirect:/dojos";

@@ -99,9 +99,6 @@ public class User {
 	public String getConfirmP() {
 		return confirmP;
 	}
-//	public List<Book> getBooks(){
-//		return books;
-//	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -119,12 +116,12 @@ public class User {
 		return this.id = e;
 	}
 	public String setFirst(String e) {
-		if (e.length() > 0) return this.first = e.substring(0,1).toUpperCase() + e.substring(1);
-		return null;
+		String result = (e != null)? e.substring(0,1).toUpperCase() + e.substring(1) : "null";
+		return this.first = result;
 	}
 	public String setLast(String e) {
-		if (e.length() > 0) return this.last = e.substring(0,1).toUpperCase() + e.substring(1);
-		return null;
+		String result = (e != null)? e.substring(0,1).toUpperCase() + e.substring(1) : "null";
+		return this.last = result;
 	}
 	public String setEmail(String e) {
 		return this.email = e;
@@ -135,9 +132,6 @@ public class User {
 	public String setPassword(String e) {
 		return this.password = e;
 	}
-//	public List<Book> getBooks(List<Book> e){
-//		return this.books = e;
-//	}
 	public String setConfirmP(String e) {
 		return this.confirmP = e;
 	}

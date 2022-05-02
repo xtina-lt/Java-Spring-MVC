@@ -4,7 +4,7 @@
 <%@ page isErrorPage="true"%>
 
 <rapid:override name="header">  
-    Test
+    Login or Register
 </rapid:override>  
 
 <rapid:override name="nav">  

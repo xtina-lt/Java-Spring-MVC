@@ -66,20 +66,22 @@ public class UserServ {
 		Optional<User> o = repo.findByEmail(e.getEmail());
 		if (!o.isPresent()) {
 			result.rejectValue("email", "Matches", "Errrr wrong!");
+			System.out.println("SAME EMAIL");
+			return null;
+		} else {
+			// 2) get user data from optional
+			User u = o.get();
+			
+			// 3) check password from form and match with optional user
+			if(!BCrypt.checkpw(e.getPassword(), u.getPassword()));
+			
+			// 4) catch errors
+			if(result.hasErrors()) return null;
+			
+			// 5) return validated user
+			System.out.println("logged in user: ");
+			u.getInfo();
+			return u;
 		}
-		
-		// 2) get user data from optional
-		User u = o.get();
-		
-		// 3) check password from form and match with optional user
-		if(!BCrypt.checkpw(e.getPassword(), u.getPassword()));
-		
-		// 4) catch errors
-		if(result.hasErrors()) return null;
-		
-		// 5) return validated user
-		System.out.println("logged in user: ");
-		u.getInfo();
-		return u;
 	}
 }

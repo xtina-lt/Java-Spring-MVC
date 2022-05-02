@@ -87,10 +87,12 @@ public class Author {
 		return this.id = e;
 	}
 	public String setFirst(String e) {
-		return this.first = e.substring(0,1) + e.substring(1);
+		String result = (e != null)? e.substring(0,1).toUpperCase() + e.substring(1) : "null";
+		return this.first = result;
 	}
 	public String setLast(String e) {
-		return this.last = e.substring(0, 1) + e.substring(1);
+		String result = (e != null)? e.substring(0,1).toUpperCase() + e.substring(1) : "null";
+		return this.last = result;
 	}
 	public Date setCreatedAt() {
 		return this.createdAt;
