@@ -15,6 +15,8 @@ public class Dojo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	// name
+	
+	@NotEmpty
 	@Size(min = 3, max = 45, message="Try a little longer..")
 	private String name;
 
@@ -24,7 +26,7 @@ public class Dojo {
     private Address address;
     
     // ONE TO MANY
-    @OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="dojo", fetch = FetchType.EAGER)
     private List<Ninja> ninjas;
 
 	

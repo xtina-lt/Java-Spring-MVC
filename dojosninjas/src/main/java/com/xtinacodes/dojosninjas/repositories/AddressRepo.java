@@ -10,8 +10,6 @@ public interface AddressRepo extends CrudRepository<Address, Integer>{
     
     List<Address> findAll();
     
-    Address findById(int e);
-    
     
 }
 

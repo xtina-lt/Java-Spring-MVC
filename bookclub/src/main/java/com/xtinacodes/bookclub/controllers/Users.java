@@ -17,7 +17,7 @@ import com.xtinacodes.bookclub.services.UserServ;
 public class Users {
 	
 	@Autowired 
-	UserServ userv;
+	UserServ serv;
 	@Autowired 
 	BookServ bserv;
 	
@@ -49,7 +49,7 @@ public class Users {
 			BindingResult result,
 			HttpSession session) {
 		
-		u = userv.register(u, result);
+		u = serv.register(u, result);
 		
 		if(result.hasErrors()) {
 			return "log.jsp";
@@ -67,7 +67,7 @@ public class Users {
 			BindingResult result, HttpSession session) {
 		
 		// 1) save user
-		User e = userv.login(l, result);
+		User e = serv.login(l, result);
 		
 		// 2) catch errors
 		if(result.hasErrors()) {

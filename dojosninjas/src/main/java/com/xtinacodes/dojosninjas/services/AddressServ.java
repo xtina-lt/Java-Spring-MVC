@@ -1,9 +1,13 @@
-
 package com.xtinacodes.dojosninjas.services;
 import org.springframework.stereotype.*;
+import org.springframework.validation.BindingResult;
+
 import com.xtinacodes.dojosninjas.models.Address;
 import com.xtinacodes.dojosninjas.repositories.AddressRepo;
 import java.util.*;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
 @Service
 public class AddressServ {
@@ -19,13 +23,24 @@ public class AddressServ {
     }
     
     public Address selectOne(int e) {
-        Optional<Address> o = Optional.of(s.findById(e));
-        Address result = (o.isPresent()) ? o.get() : null;
-        return result;
+        return s.findById(e).orElse(null);
     }
     
     public Address save(Address e) {
         return s.save(e);
+    }
+    
+    public Address update(Address e, BindingResult result) {
+		try {
+			System.out.println("x");
+			return s.save(e);
+	      } catch (ConstraintViolationException ahh){
+	    	  System.out.println("caught address");
+			for (ConstraintViolation<?> i : ahh.getConstraintViolations()) {
+			result.rejectValue(String.format("address.%s", i.getPropertyPath().toString()), "error.dojo", i.getMessage());
+			}
+			return null;
+	      }
     }
     
     public void delete(int e) {

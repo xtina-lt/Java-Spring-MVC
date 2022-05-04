@@ -13,12 +13,12 @@ import com.xtinacodes.saveTravels.models.Trip;
 @Controller
 public class Trips {
 
-	private final TripServ ts;
+	private final TripServ serv;
 	public Trips(TripServ e) {
-		this.ts = e;
+		this.serv = e;
 	}
 	
-	@RequestMapping("")
+	@RequestMapping("/")
 	public String index(Model m) {
 		m.addAttribute("output", "Lets save and travel!");
 		return "index.jsp";
@@ -26,20 +26,20 @@ public class Trips {
 	
 	// READ ALL and SHOW CREATE
 	@RequestMapping("/trips")
-	public String readTrips(@ModelAttribute("input") Trip e,
-			Model m) {
-		m.addAttribute("output", ts.selectAll());
+	public String readTrips(Model m,
+			@ModelAttribute("input") Trip e) {
+		m.addAttribute("output", serv.selectAll());
 		return "trips.jsp";
 	}
 	
 	// CREATE process
 	@PostMapping("/trip/create")
-	public String createTrip(@Valid @ModelAttribute("input") Trip e,
-			BindingResult result,
-			Model m) {
-		m.addAttribute("output", ts.selectAll());
+	public String createTrip(Model m,
+			@Valid @ModelAttribute("input") Trip e,
+			BindingResult result) {
+		m.addAttribute("output", serv.selectAll());
 		if (result.hasErrors()) return "trips.jsp";
-		ts.save(e);
+		serv.save(e);
 		return "redirect:/trips";
 	}
 	
@@ -47,7 +47,7 @@ public class Trips {
 	@GetMapping("/trip/{id}")
 	public String readTrip(Model m,
 			@PathVariable("id") Integer id) {
-		m.addAttribute("output", ts.selectOne(id));
+		m.addAttribute("output", serv.selectOne(id));
 		return "trip.jsp";
 	}
 	
@@ -58,14 +58,14 @@ public class Trips {
     		BindingResult result) {
     	System.out.println("made it");
     	if (result.hasErrors()) return "trip.jsp";
-    	ts.save(e);
+    	serv.save(e);
     	return "redirect:/trips";
    }
 	
 	// DELETE
 	@DeleteMapping("/trip/{id}/delete")
 	public String deleteTrip(@PathVariable("id") int id){
-		ts.delete(id);
+		serv.delete(id);
 		return "redirect:/trips";
 	}
 

@@ -28,6 +28,8 @@ public class Book {
 	
 	// IMG
 	@NotEmpty(message="Gimme a link!")
+	@NotNull
+	@Size(min=10, message="Gimme a link!")
 	private String img;
 	
 	// AUTHOR
@@ -109,9 +111,14 @@ public class Book {
 		return this.id = e;
 	}
 	public String setTitle(String e) {
-		StringBuilder sb = new StringBuilder(e);
-		sb.setCharAt(0, Character.toTitleCase(sb.charAt(0)));
-		return this.title=sb.toString();
+		if (e.length() > 0){
+			StringBuilder sb = new StringBuilder(e);
+			sb.setCharAt(0, Character.toTitleCase(sb.charAt(0)));
+			return this.title=sb.toString();
+		} else {
+			return this.title="";
+		}
+
 	}
 	
 	public String setDescription(String e) {

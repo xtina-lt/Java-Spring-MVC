@@ -112,8 +112,7 @@
    			Update 
    		</h2>
     	<!-- FORM -->
-		<form:form action="/ninja/update" method="POST" modelAttribute="output">
-		<input type="hidden" name="_method" value="put">
+		<form:form action="/ninja/update" method="PUT" modelAttribute="output">
 			<!-- id -->
 			<form:input type="hidden" path="id"/>
 				<form:label path="name">

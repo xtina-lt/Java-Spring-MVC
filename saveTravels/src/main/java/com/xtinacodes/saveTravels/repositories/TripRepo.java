@@ -9,9 +9,7 @@ import com.xtinacodes.saveTravels.models.Trip;
 public interface TripRepo extends CrudRepository<Trip, Integer>{
 	
 	List<Trip> findAll();
-	
-	Trip findById(int e);
-	
+		
 	Trip findByName(String e);
 	
 

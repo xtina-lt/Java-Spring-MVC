@@ -1,4 +1,3 @@
-
 package com.xtinacodes.dojosninjas.controllers;
 
 import javax.validation.Valid;

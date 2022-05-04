@@ -39,10 +39,10 @@ public class UserServ {
 	// REGISTER
 	public User register(User e, BindingResult result) {
 		
-		// 1) check email
-		Optional<User> o = repo.findByEmail(e.getEmail());
-		if (o.isPresent()) result.rejectValue("email", "Unique", "Let's try a different email :)");
-		if(!e.getPassword().equals(e.getConfirmP())) result.rejectValue("confirmP", "Matches", "Lets play the matching game!");
+		// 1) check email and password
+		User r = repo.findByEmail(e.getEmail()).orElse(null);
+		if (r != null) result.rejectValue("email", "Unique", "Let's try a different email :)");
+		if(e.getPassword() != e.getConfirmP()) result.rejectValue("confirmP", "Matches", "Lets play the matching game!");
 		
 		// 2) return errors
 		if (result.hasErrors()) return null;

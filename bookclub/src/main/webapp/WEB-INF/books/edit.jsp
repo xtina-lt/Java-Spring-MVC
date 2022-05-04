@@ -29,48 +29,48 @@
 		<img src="${b.img}">
 	</div>
 	<div>
-		<form:form action="/book/process" method="put" modelAttribute="b">
-			<!-- id -->
-			<form:hidden path="id"/>
-			<!-- title -->
-			<form:label path="title">
-				Title:
-			</form:label>
-			<br>
-			<form:errors path="title"/>
-			<form:input path="title"/>
-			<!-- description -->
-			<form:label path="description">
-				Description: 
-			</form:label>
-			<br>
-			<form:errors path="description"/>
-			<form:textarea path="description"/>
-			<!-- img -->
-			<form:label path="img">
-				Image Url:
-			</form:label>
-			<br>
-			<form:errors path="img"/>
-			<form:textarea path="img"/>
-			<!-- author id -->
-			<form:label path="author">
-					Author
-			</form:label>
-			<form:errors path="author"/>
-			<form:select path="author" value="${ b.author.id }">
-				<c:forEach var="i" items="${a}">
-					<form:option value="${i.id }" path="author">
-						${ i.last }, ${ i.first }
-					</form:option>
-				</c:forEach>
-			</form:select>
-			<!-- user id -->
-			<form:errors path="user"/>
-			<form:hidden value="${u}" path="user"/>
-			<!-- submit -->
-			<input type="submit" value="Edit book">
-		</form:form>
+	<form:form action="/book/process" method="put" modelAttribute="b">
+		<!-- id -->
+		<form:hidden path="id"/>
+		<!-- title -->
+		<form:label path="title">
+			Title:
+		</form:label>
+		<br>
+		<form:errors path="title"/>
+		<form:input path="title"/>
+		<!-- description -->
+		<form:label path="description">
+			Description: 
+		</form:label>
+		<br>
+		<form:errors path="description"/>
+		<form:textarea path="description"/>
+		<!-- img -->
+		<form:label path="img">
+			Image Url:
+		</form:label>
+		<br>
+		<form:errors path="img"/>
+		<form:textarea path="img"/>
+		<!-- author id -->
+		<form:label path="author">
+				Author
+		</form:label>
+		<form:errors path="author"/>
+		<form:select path="author" value="${ b.author.id }">
+			<c:forEach var="i" items="${a}">
+				<form:option value="${i.id }" path="author">
+					${ i.last }, ${ i.first }
+				</form:option>
+			</c:forEach>
+		</form:select>
+		<!-- user id -->
+		<form:errors path="user"/>
+		<form:hidden value="${u}" path="user"/>
+		<!-- submit -->
+		<input type="submit" value="Edit book">
+	</form:form>
 	</div>
 </rapid:override>  
 

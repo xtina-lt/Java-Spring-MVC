@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+
 @Entity
 @Table(name="addresses")
 public class Address {
@@ -60,18 +61,20 @@ public class Address {
 	
 	// CONSTRUCTORS
 	public Address() {}
-	public Address(String s, String c, String st, int z ) {
+	public Address(int i, String s, String c, String st, int z ) {
+		this.id=i;
 		this.street = s;
 		this.city = c;
 		this.state = st;
 		this.zip = z;
 	}
-	public Address(Address e) {
-		this.street = e.street;
-		this.city = e.city;
-		this.state = e.state;
-		this.zip = e.zip;
-	}
+//	public Address(Address e) {
+//		this.id = e.getId();
+//		this.street = e.getStreet();
+//		this.city = e.getCity();
+//		this.state = e.getState();
+//		this.zip = e.getZip();
+//	}
 	
 	
 	// ACCESSORS
@@ -97,6 +100,7 @@ public class Address {
 		return updatedAt;
 	}
 	public void getInfo() {
+		System.out.println("id: " + id);
 		System.out.printf("%s \n %s, %s, %d", street, city, state, zip);
 	}
 	
@@ -109,7 +113,8 @@ public class Address {
 	}	
 	public String setCity(String e) {
 		return this.city = e;
-	}	
+	}
+	
 	public String setState(String e) {
 		return this.state = e;
 	}

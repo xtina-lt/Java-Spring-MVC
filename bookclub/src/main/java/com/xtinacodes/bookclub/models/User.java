@@ -116,12 +116,12 @@ public class User {
 		return this.id = e;
 	}
 	public String setFirst(String e) {
-		String result = (e != null)? e.substring(0,1).toUpperCase() + e.substring(1) : "null";
+		String result = (e.isEmpty())? "" : e.substring(0,1).toUpperCase() + e.substring(1);
 		return this.first = result;
 	}
 	public String setLast(String e) {
-		String result = (e != null)? e.substring(0,1).toUpperCase() + e.substring(1) : "null";
-		return this.last = result;
+		String result = (e.isEmpty())? "" : e.substring(0,1).toUpperCase() + e.substring(1);
+		return this.first = result;
 	}
 	public String setEmail(String e) {
 		return this.email = e;

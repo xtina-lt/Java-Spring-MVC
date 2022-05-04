@@ -16,6 +16,5 @@ public interface BookRepo extends CrudRepository<Book, Integer>{
 	
 	List<Book> findAll();
 	List<Book> findByTitleContaining(String e);
-	Book findById(int e);
 	// countBy<Column>Containing, removeBy<Column>
 }

@@ -33,9 +33,10 @@ public class Books {
 	@RequestMapping("/book/new")
 	public String bookNew(Model m,
 			@ModelAttribute("b") Book b,
+			@ModelAttribute("a") Author a,
 			HttpSession session) {
 		
-		m.addAttribute("a", aserv.selectAll());
+		m.addAttribute("as", aserv.selectAll());
 		m.addAttribute("u", (int) session.getAttribute("id"));
 		
 		if (session.getAttribute("id") == null) return "redirect:/logoreg";
@@ -81,7 +82,8 @@ public class Books {
 	
 	// EDIT PROCESS
 	@PutMapping("/book/process")
-	public String bookEditProcess(@Valid @ModelAttribute("b") Book b,BindingResult result, Model m, HttpSession session) {
+	public String bookEditProcess(@Valid @ModelAttribute("b") Book b,
+			BindingResult result, Model m, HttpSession session) {
 		m.addAttribute("a", aserv.selectAll());
 		m.addAttribute("u", (int) session.getAttribute("id"));
 		System.out.println("yo");

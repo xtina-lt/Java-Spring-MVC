@@ -18,8 +18,7 @@ public class TripServ {
 	}
 	
 	public Trip selectOne(int id) {
-		Optional<Trip> e = Optional.of(repo.findById(id));
-		return e.orElse(null);
+		return repo.findById(id).orElse(null);
 	}
 	
 	public Trip save(Trip e) {

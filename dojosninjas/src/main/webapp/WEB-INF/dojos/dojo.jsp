@@ -99,11 +99,10 @@
    			Update 
    		</h2>
     	<!-- FORM -->
-		<form:form action="/dojo/update" method="POST" modelAttribute="output">
-		<input type="hidden" name="_method" value="put">
+		<form:form action="/dojo/update" method="PUT" modelAttribute="o">
 			<!-- id -->
 			<form:input type="hidden" path="id"/>
-				<form:label path="name">
+			<form:label path="name">
 				Name:
 			</form:label>
 			<br>
@@ -111,13 +110,9 @@
 			<form:input path="name"/>
 			<!-- address id -->
 			<form:input type="hidden" path="address.id"/>
-			<!-- address -->
-			<form:label path="address">
-				Address:
-			</form:label>
 			<!-- street -->
 			<form:label path="address.street">
-				Street:
+				Address:
 			</form:label>
 			<br>
 			<form:errors path="address.street"/>

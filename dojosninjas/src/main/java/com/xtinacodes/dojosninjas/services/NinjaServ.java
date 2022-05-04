@@ -9,26 +9,24 @@ import java.util.*;
 @Service
 public class NinjaServ {
     
-    private final NinjaRepo r;
+    private final NinjaRepo repo;
     @Autowired
     private AddressServ aserv;
     
     public NinjaServ(NinjaRepo e) {
-        this.r = e;
+        this.repo = e;
     }
     
     public List<Ninja> selectAll(){
-        return r.findAll();
+        return repo.findAll();
     }
     
     public Ninja selectOne(int e) {
-    	Optional<Ninja> o = r.findById(e);
-    	Ninja result = (o.isPresent()) ? o.get() : null;
-        return result;
+        return repo.findById(e).orElse(null);
     }
     
     public Ninja save(Ninja e) {
-        return r.save(e);
+        return repo.save(e);
     }
     
     public void delete(int e) {

@@ -78,8 +78,8 @@
 					</td>
 				</tr>
 			</table>
-		</div>
-		<div>
+			</div>
+			<div>
 			<h1>
 				Update Trip
 			</h1>

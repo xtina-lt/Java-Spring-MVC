@@ -31,11 +31,8 @@ public class BookServ {
 		return repo.findByTitleContaining(e);
 	}
 
-	public Book findBook(int id) {
-		Optional<Book> e = Optional.of(repo.findById(id));
-		// OPTIONAL MEANS EITHER EXISTS OR NOT
-		Book result = (e.isPresent()) ? e.get() : null;
-		return result;
+	public Book selectOne(int id) {
+		return repo.findById(id).orElse(null);
 	}
 	
 	// MUTATORS

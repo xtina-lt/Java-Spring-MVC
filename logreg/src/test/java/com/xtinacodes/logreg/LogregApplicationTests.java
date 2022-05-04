@@ -1,10 +1,10 @@
-package com.xtinacodes.bookclub;
+package com.xtinacodes.logreg;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BookclubApplicationTests {
+class LogregApplicationTests {
 
 	@Test
 	void contextLoads() {

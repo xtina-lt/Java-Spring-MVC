@@ -29,7 +29,29 @@
 	
 	<main>
 		<div>
-		 <c:out value="${output}"/>
+			<ul>
+				<li>
+					collect input and add to db
+				</li>
+				<li>
+					data binding
+				</li>
+				<li>
+					@ModelAttribute annotation
+				</li>
+				<li>
+					form:form data binding
+				</li>
+				<li>
+					validations
+				</li>
+				<li>
+					routes and POST rules
+				</li>
+			</ul>
+		</div>
+		<div>
+			${output}
 		</div>
 	</main>
 </body>

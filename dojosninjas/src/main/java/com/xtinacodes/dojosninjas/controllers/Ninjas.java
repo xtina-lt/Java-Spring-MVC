@@ -1,4 +1,3 @@
-
 package com.xtinacodes.dojosninjas.controllers;
 
 import javax.validation.*;
@@ -19,9 +18,10 @@ public class Ninjas {
 	@Autowired
 	private AddressServ aserv;
 	@Autowired
-	private DojoServ dserv;
-	@Autowired
 	private NinjaServ serv;
+	@Autowired
+	private DojoServ dserv;
+
 	
 
 	// READ ALL and SHOW CREATE
@@ -43,8 +43,7 @@ public class Ninjas {
     	m.addAttribute("dojos", dserv.selectAll());
     	
 		try {
-			Address a = aserv.save(new Address(e.getAddress()));
-			e.setAddress(a);
+			aserv.save(e.getAddress());
 			serv.save(e);
 			return("redirect:/ninjas");
 	      } catch (ConstraintViolationException ahh){
@@ -57,6 +56,37 @@ public class Ninjas {
     } //route
     	
     
+    
+//    // SHOW ONE and SHOW UPDATE
+//    @GetMapping("/ninja/{id}")
+//    public String ninjaRead( @PathVariable("id") Integer id,
+//    		@ModelAttribute("la") Ninja e,
+//    		Model m) {
+//    	m.addAttribute("output", serv.selectOne(id));
+//    	m.addAttribute("dojos", dserv.selectAll());
+//    	return "/ninjas/ninja.jsp";
+//    }
+//    
+//    // PROCESS UPDATE
+//    @PutMapping("/ninja/update")
+//    public String ninjaUpdate( 
+//    		@Valid @ModelAttribute("la") Ninja e,
+//    		BindingResult result,
+//    		Model m) {
+//    	m.addAttribute("dojos", dserv.selectAll());
+//    	m.addAttribute("output", serv.selectOne(e.getId()));
+//    	e.getAddress().getInfo();
+//		try {
+//			aserv.save(e.getAddress());
+//			serv.save(e);
+//			return("redirect:/ninjas");
+//	      } catch (ConstraintViolationException ahh){
+//			for (ConstraintViolation<?> i : ahh.getConstraintViolations()) {
+//			result.rejectValue(String.format("address.%s", i.getPropertyPath().toString()), "error.dojo", i.getMessage());
+//			}
+//			return "/ninjas/ninja.jsp";
+//	      }
+//    }
     
     // SHOW ONE and SHOW UPDATE
     @GetMapping("/ninja/{id}")
@@ -75,9 +105,8 @@ public class Ninjas {
     		Model m) {
     	m.addAttribute("dojos", dserv.selectAll());
 
-
 		try {
-			Address a = aserv.save(new Address(e.getAddress()));
+			Address a = aserv.save(e.getAddress());
 			e.setAddress(a);
 			serv.save(e);
 			return("redirect:/ninjas");
@@ -99,5 +128,4 @@ public class Ninjas {
 
 
 }
-
 
