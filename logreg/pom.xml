@@ -61,15 +61,15 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>cn.org.rapid</groupId>
-			<artifactId>rapid-core</artifactId>
-			<version>4.0</version>
-		</dependency>
-		<dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
+		<dependency>
+			<groupId>com.googlecode.rapid-framework</groupId>
+			<artifactId>rapid-core</artifactId>
+			<version>4.0.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>

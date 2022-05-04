@@ -33,19 +33,21 @@ public class UserServ {
 
     // REGISTER
     public User register(User e, BindingResult result){
+
         // 1 ) check email
         User r = repo.findByEmail(e.getEmail()).orElse(null);
         if (r!=null) result.rejectValue("email", "Unique", "Let's try a different email:)");
-        // 1 ) check password
+        // 2 ) check password
         if(!e.getPassword().equals(e.getConfirmP())) result.rejectValue("confirmP", "matches", "Let's play the matching game!");
-        // 2) return errors
+        // 3) catch errors
         if (result.hasErrors()) return null;
-        // 3) hash pword
+        // 4) hash pword
         String hashed = BCrypt.hashpw(e.getPassword(), BCrypt.gensalt());
         e.setPassword(hashed);
-        // 4) save user
+        // 5) save and return validated user
         repo.save(e);
         return e;
+
     }
 
     // LOGIN
@@ -59,8 +61,9 @@ public class UserServ {
         if(!BCrypt.checkpw(e.getPassword(), u.getPassword())) result.rejectValue("password", "Unique", "Let's try a different password:)");
         // 3) catch errors
         if (result.hasErrors()) return null;
-        // 4) return validated user
+        // 4) save and return validated user
         return u;
+
     }
     
 

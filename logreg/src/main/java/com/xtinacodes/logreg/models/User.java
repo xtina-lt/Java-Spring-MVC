@@ -13,39 +13,32 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
 	// FIRST NAME
 	@NotEmpty(message="Let us know who you are..")
 	@Size(min=2, max=45)
 	private String first;
-	
 	// LAST NAME
 	@NotEmpty(message="Let us know who you are..")
 	@Size(min=2, max=45)
 	private String last;
-	
 	// EMAIL
 	@NotEmpty(message="Let us know how to contact you..")
 	@Size(min=2, max=100)
 	private String email;
-	
+	// confirm
 	@Transient
 	@NotEmpty(message="Check yourself before you wreck yourself!")
 	@Size(min=2, max=100)
 	private String confirmE;
-	
 	// PASSWORD
 	@NotEmpty(message="Password required yo!")
 	@Size(min=8, max=255)
 	private String password;
-	
+	// confirm
 	@Transient
 	@NotEmpty(message="Check yourself before you wreck yourself!")
 	@Size(min=8, max=255)
 	private String confirmP;
-	
- 
-	
 	// CRERATED AT
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -54,7 +47,6 @@ public class User {
 	public void onCreate() {
 		this.createdAt = new Date();
 	}
-	
 	// UPDATED AT
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;

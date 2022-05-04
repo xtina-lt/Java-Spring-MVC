@@ -8,12 +8,12 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.xtinacodes.bookclub</groupId>
-	<artifactId>bookclub</artifactId>
+	<groupId>com.xtinacodes.projectscategories</groupId>
+	<artifactId>projectscategories</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>bookclub</name>
-	<description>login and reg, one-to-many relationships</description>
+	<name>projectscategories</name>
+	<description>many-to-many relationships</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -61,16 +61,12 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.mindrot</groupId>
-            <artifactId>jbcrypt</artifactId>
-            <version>0.4</version>
-        </dependency>
-		<dependency>
 			<groupId>com.googlecode.rapid-framework</groupId>
 			<artifactId>rapid-core</artifactId>
 			<version>4.0.5</version>
 		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>
