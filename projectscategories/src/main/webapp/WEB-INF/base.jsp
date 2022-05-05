@@ -19,9 +19,15 @@ pageEncoding="ISO-8859-1"%>
 </header>
 
 <nav>
-    <rapid:block name="nav"> 
-    base_nav_content
-    </rapid:block>
+    <a href="/">
+        Home
+    </a>
+    <a href="/new">
+        New
+    </a>
+    <a href="/erd">
+        ERD
+    </a>
 </nav>
 
 <main>

@@ -6,15 +6,6 @@
     Projects and Categories
 </rapid:override> 
  
-<rapid:override name="nav">  
-    <a href="/">
-        Home
-    </a>
-    <a href="/new">
-        New
-    </a>
-</rapid:override>  
-
 <rapid:override name="main"> 
     <div>
         <h2>
@@ -37,7 +28,7 @@
                 - Read an instance with associated relationship data.
             </li>
         </ul>
-        <img src="https://media3.giphy.com/media/26tn33aiTi1jkl6H6/200.gif">
+        <img src="https://c.tenor.com/x7FrMk4q10IAAAAM/hacker-reality-colored-keyboard.gif">
     </div> 
     <div>
         <h2>
@@ -68,7 +59,7 @@
                 </td>
                 <td>
                     <a href="/project/${i.id}">
-                        View ${i.id}
+                        View
                     </a>
                 </td>
             </tr>

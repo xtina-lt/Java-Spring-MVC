@@ -14,9 +14,9 @@ html{
     background-image: 
     linear-gradient(
     to bottom right, 
-    rgba(0, 255, 255, 0.8), 
-    rgba(184, 212, 142, 0.5), 
-    rgba(128, 255, 212, 0.8));
+    rgb(44, 3, 25), 
+    rgb(1, 31, 34), 
+    rgb(0, 0, 0));
     background-position: center;
     background-size: auto;
     background-repeat: no-repeat;
@@ -33,12 +33,12 @@ html{
         /* font */
         font-family: "Barlow Condensed";
         font-size: 2vh;
-        color: rgba(0, 0, 0, 0.6);
+        color: rgba(170, 236, 229, 0.8);
     }
     
         header{
-            background-color: rgba(240, 248, 255, 0.4);
-            color: rgba(0, 194, 175, 0.8);
+            background-color: rgba(54, 64, 66, 0.4);
+            color: rgba(161, 9, 90, 0.8);
             border-radius: 2vh;
             margin: 1vh auto;
             padding: 1vh;
@@ -53,18 +53,18 @@ html{
 			  }
 			  
 			  to {
-			    text-shadow: 0 0 0.4vh #fff, 0 0 0.6vh rgba(184, 212, 142, 0.2), 0 0 0.8vh rgba(184, 212, 142,0.2), 0 0 1vh rgba(184, 212, 142,0.2), 0 0 1.2vh rgba(184, 212, 142,0.2);
+			    text-shadow: 0 0 0.4vh #fff, 0 0 0.6vh rgba(240, 248, 255, 0.4), 0 0 0.8vh rgba(240, 248, 255, 0.4), 0 0 1vh rgba(240, 248, 255, 0.4), 0 0 1.2vh rgba(240, 248, 255, 0.4);
 			  }
 			}
         
         nav{
-        	background-color: rgba(240, 248, 255, 0.4);
-        	color: rgba(0, 194, 175, 0.8);
+        	background-color: rgba(54, 64, 66, 0.4);
+            color:rgba(128, 0, 128,0.8);
         	border-radius: 2vh;
         	margin: 1vh auto;
             padding: 1vh;
             font-size: 2vh;
-            font-family: lobster;  	
+            font-family: lobster;  
         }
         	nav > a {
 				margin-left: 2vh;
@@ -88,7 +88,7 @@ html{
 
         main > div{
             /* background and set */
-            background-color: rgba(240, 248, 255, 0.4);
+            background-color: rgba(54, 64, 66, 0.4);
             border-radius: 3vh;
             /*height width*/
 			height: max-content;
@@ -99,9 +99,9 @@ html{
 			overflow-y: scroll;
 			scrollbar-width: none;
             /* margin */
-            margin : 1vh auto;
+            margin : 1vh;
             padding: 1.5vh;
-		    animation: fadeInAnimation ease 3s;
+		    animation: fadeInAnimation ease 5s;
 		    animation-iteration-count: 1;
 		    animation-fill-mode: forwards;
 		}
@@ -122,7 +122,7 @@ html{
 /*HEADERS*/
 h1, h2, h3, h4, h5, h6 {
     font-family: Lobster;
-    color:rgba(0, 194, 175, 0.8);
+    color: rgba(0, 194, 175, 0.8);
     padding: 0;
     padding-bottom: 0.5vh;
     margin: 0;
@@ -159,18 +159,19 @@ a {
 
 img {
 	filter: opacity(75%);
-	mix-blend-mode: lighten;
-	max-width: 30vw;
-	max-height: 40vh;
-	animation: fadeInAnimation ease 10s;
+	animation: fadeInAnimation ease 7s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
-	border-radius: 25% 10%;
+	border-radius: 80%;
+    width: 25vw; /* width of container */
+    object-fit: cover;
 }
 	#erd{
-		max-width: min-content;
+        width: 100%;
+		max-width: max-content;
 		max-height: 83vh;
-		filter: grayscale(50%);
+		filter: opacity(0.6) hue-rotate(119deg);
+        border-radius: 4vh 4vh 4vh 4vh;
 	}
 
 /* FORMS */
@@ -201,7 +202,7 @@ input, select, textarea, select:focus{
 table{
     border-collapse: collapse;
     box-sizing: border-box;
-    background-color: rgba(204, 255, 244, 0.2);
+    background-color: rgba(240, 248, 255, 0.2);
     border: none;
     /* padding and margin */
     padding: 1vh;
@@ -242,13 +243,16 @@ ul {
 	main{
 		display: block;
 	}
-	.block {
-    	display: block;
-  	}
+        main > div{
+            margin: 1vh auto;
+            width:max-content;
+            max-width: 95vw;
+        }
   	.minWidth{
   		min-width: 75vw;
   	}
   	img{
+        width: 45vh;
   		max-width: 80vw;
   	}
 }
@@ -256,12 +260,18 @@ ul {
 /* Phone is 600px*/
 @media only screen and (max-width: 600px) {
 	img{
+        width: 50vh;
 		max-width: 98vw;
 	}
 	main{
 		display: block;
 	}
-	  	.minWidth{
-  			min-width: 90vw;
-  	}
+        main > div{
+            margin: 1vh auto;
+            width:max-content;
+            max-width: 95vw;
+        }
+    .minWidth{
+        min-width: 90vw;
+    }
 }

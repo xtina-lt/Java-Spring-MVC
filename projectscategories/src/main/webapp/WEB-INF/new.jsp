@@ -7,12 +7,6 @@
     New Project or Category
 </rapid:override> 
  
-<rapid:override name="nav">  
-    <a href="/">
-        Home
-    </a>
-</rapid:override>  
-
 <rapid:override name="main">  
     <div>
         <h2>

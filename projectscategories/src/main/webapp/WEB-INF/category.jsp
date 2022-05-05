@@ -5,20 +5,33 @@
 <%@ page isErrorPage="true"%>
 
 <rapid:override name="header">  
-    ${output.name}
+    Category
 </rapid:override> 
  
-<rapid:override name="nav">  
-    <a href="/">
-        Home
-    </a>
-    <a href="/new">
-        New
-    </a>
-</rapid:override>  
-
 <rapid:override name="main"> 
     <div>
+        <div>
+            <img src="https://cdn.dribbble.com/users/529932/screenshots/9694508/organize_21.01_-_gif_300.gif">
+            <h2>
+                Categories
+            </h2>
+            The <b>Categories</b> table is part of a <span class="accent">Many-To-Many</span> relationship.
+            <br>
+            It's relationship is with the <i>Projects</i> table.
+            <br>
+            The table that <i>connects</i> <b>Projects</b> and <b>Categories</b> is <b>projects_categories</b>.
+            <br>
+            <br>
+            <form:form action="/category/${output.id}/delete" method="delete">
+                <input type="submit" value="Delete">
+            </form:form> 
+        </div>
+    </div>
+    <div>
+        <h2>
+            Name
+        </h2>
+            ${output.name}
         <h2>
             My Projects:
         </h2>
@@ -26,21 +39,13 @@
             - ${i.name}
             <br>
         </c:forEach>    
-        <br>
-        <form:form action="/category/${output.id}/delete" method="delete">
-            <input type="submit" value="Delete">
-        </form:form> 
     </div>
     <div>
-        <h2>
-            Add to Category
-        </h2>
-        <br>
         <form action="/category/${id}/add" method="post">
             <label for="pid">
-                <h3>
-                    Project:
-                </h3>
+                <h2>
+                    Add a project:
+                </h2>
             </label>				
             <select name="pid">
                 <c:forEach var="i" items="${notin}">
@@ -51,8 +56,11 @@
             </select>
             <input type="submit" value="Add"/>
         </form>
-    </div>
-    <div>
+        <br>
+        <br>
+        <h2>
+            Update Category
+        </h2>
         <form:form action="/category/process" method="put" modelAttribute="c">
             <form:hidden path="id"/>
             <form:label path="name">

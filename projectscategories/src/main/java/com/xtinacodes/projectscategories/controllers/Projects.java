@@ -23,6 +23,11 @@ public class Projects {
 		return "index.jsp";
 	}
 
+	@RequestMapping("/erd")
+	public String erd(){
+		return "erd.jsp";
+	}
+
 	@RequestMapping("/new")
 	public String showNew(Model m,
 		@ModelAttribute("p") Project p,
