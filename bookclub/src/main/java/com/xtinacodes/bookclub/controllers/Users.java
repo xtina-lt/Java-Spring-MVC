@@ -55,7 +55,7 @@ public class Users {
 			return "log.jsp";
 		}
 		
-		session.setAttribute("id", u.getId());
+		session.setAttribute("loggedUser", serv.selectOne(u.getId()));
 	
 		return "redirect:/";
 	}
@@ -76,7 +76,7 @@ public class Users {
 		}
 		
 		// 3) save to session
-		session.setAttribute("id", e.getId());
+		session.setAttribute("loggedUser", serv.selectOne(e.getId()));
 		return "redirect:/";
 	}
 	

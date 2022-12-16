@@ -8,6 +8,7 @@ public class LoginUser {
 	// EMAIL
 	@NotEmpty(message="Let us know how to contact you..")
 	@Size(min=2, max=100, message="Try another email")
+	@Email(message="Let's try a valid email :) ")
 	private String email;
 	
 	// PASSWORD

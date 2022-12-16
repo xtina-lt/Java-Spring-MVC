@@ -48,7 +48,7 @@
 				<th>
 					Posted By
 				</th>
-				<c:if test="${output.user.id == u}">
+				<c:if test="${output.user.id == loggedUser.id}">
 					<th>
 						Options
 					</th>
@@ -65,14 +65,14 @@
 					${ output.author.last }, ${ output.author.first }
 				</td>
 				<td>
-					<c:if test="${output.user.id == u}">
+					<c:if test="${output.user.id == loggedUser.id}">
 					    You
 					</c:if>
-					<c:if test="${output.user.id != u}">
+					<c:if test="${output.user.id != loggedUser.id}">
 					    ${output.user.last}, ${output.user.first}
 					</c:if>
 				</td>
-				<c:if test="${output.user.id == u}">
+				<c:if test="${output.user.id == loggedUser.id}">
 					<td>
 						<a href="/book/${output.id}/edit">
 							Edit

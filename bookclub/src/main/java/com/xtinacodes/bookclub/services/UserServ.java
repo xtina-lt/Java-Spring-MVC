@@ -59,29 +59,19 @@ public class UserServ {
 		return e;
 	}
 	
-	// LOGIN
-	public User login(LoginUser e, BindingResult result) {
-		
-		// 1) check email
-		Optional<User> o = repo.findByEmail(e.getEmail());
-		if (!o.isPresent()) {
-			result.rejectValue("email", "Matches", "Errrr wrong!");
-			System.out.println("SAME EMAIL");
-			return null;
-		} else {
-			// 2) get user data from optional
-			User u = o.get();
-			
-			// 3) check password from form and match with optional user
-			if(!BCrypt.checkpw(e.getPassword(), u.getPassword()));
-			
-			// 4) catch errors
-			if(result.hasErrors()) return null;
-			
-			// 5) return validated user
-			System.out.println("logged in user: ");
-			u.getInfo();
-			return u;
-		}
+    // LOGIN
+    public User login(LoginUser e, BindingResult result){
+    
+        // 1) check email
+        User u = repo.findByEmail(e.getEmail()).orElse(null);
+        if (u==null) result.rejectValue("email", "Unique", "Let's try a different email:)");
+        if (result.hasErrors()) return null;
+        // 2) check password
+        if(!BCrypt.checkpw(e.getPassword(), u.getPassword())) result.rejectValue("password", "Unique", "Let's try a different password:)");
+        // 3) catch errors
+        if (result.hasErrors()) return null;
+        // 4) save and return validated user
+        return u;
+
 	}
 }

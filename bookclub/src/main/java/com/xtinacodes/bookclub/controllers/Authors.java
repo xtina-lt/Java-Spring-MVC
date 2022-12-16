@@ -28,9 +28,8 @@ public class Authors {
 			HttpSession session) {
 		
 		// 1) initialization
-		if (session.getAttribute("id") == null) return "redirect:/logoreg";
+		if (session.getAttribute("loggedUser") == null) return "redirect:/logoreg";
 		m.addAttribute("as", serv.selectAll());
-		m.addAttribute("u", (int) session.getAttribute("id"));
 		
 		// 2) execute
 		if (result.hasErrors()) return "/books/new.jsp";

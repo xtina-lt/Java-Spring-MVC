@@ -58,9 +58,9 @@
         <!-- add a category -->
         <form action="/project/${id}/add" method="post">
             <label for="cid">
-                <h2>
+                <span class="accent">
                     Add Category:
-                </h2>
+                </span>
             </label>				
             <select name="cid">
                 <c:forEach var="i" items="${notin}">

@@ -43,9 +43,9 @@
     <div>
         <form action="/category/${id}/add" method="post">
             <label for="pid">
-                <h2>
+                <span class="accent">
                     Add a project:
-                </h2>
+                </span>
             </label>				
             <select name="pid">
                 <c:forEach var="i" items="${notin}">

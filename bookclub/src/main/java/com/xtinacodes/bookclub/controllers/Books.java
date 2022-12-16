@@ -20,26 +20,26 @@ public class Books {
 	@Autowired
 	public AuthorServ aserv;
 	
-	@RequestMapping("/bookshelf")
+	@GetMapping("/bookshelf")
 	public String bookshelf(Model m,
 			HttpSession session) {
-		if (session.getAttribute("id") == null) return "redirect:/logoreg";
+
+		if (session.getAttribute("loggedUser") == null) return "redirect:/logoreg";
 		m.addAttribute("output", serv.selectAll());
-		m.addAttribute("u", userv.selectOne((int) session.getAttribute("id")));
+
 		return "/books/books.jsp";
 	}
 	
 	// NEW BOOK SHOW
-	@RequestMapping("/book/new")
+	@GetMapping("/book/new")
 	public String bookNew(Model m,
 			@ModelAttribute("b") Book b,
 			@ModelAttribute("a") Author a,
 			HttpSession session) {
 		
+		if (session.getAttribute("loggedUser") == null) return "redirect:/logoreg";
 		m.addAttribute("as", aserv.selectAll());
-		m.addAttribute("u", (int) session.getAttribute("id"));
-		
-		if (session.getAttribute("id") == null) return "redirect:/logoreg";
+
 		return "/books/new.jsp";
 	}
 	
@@ -51,9 +51,8 @@ public class Books {
 			HttpSession session) {
 		
 		// 1) initialization
-		if (session.getAttribute("id") == null) return "redirect:/logoreg";
+		if (session.getAttribute("loggedUser") == null) return "redirect:/logoreg";
 		m.addAttribute("a", aserv.selectAll());
-		m.addAttribute("u", (int) session.getAttribute("id"));
 		
 		// 2) execute
 		if (result.hasErrors()) return "/books/new.jsp";
@@ -62,21 +61,23 @@ public class Books {
 	}
 	
 	// READ BOOK
-	@GetMapping("/book/{id}")
+	@RequestMapping("/book/{id}")
 	public String bookRead(@PathVariable("id") int id,
 			Model m, HttpSession session) {
+
 		m.addAttribute("output", serv.selectOne(id));
-		m.addAttribute("u", (int) session.getAttribute("id"));
+
 		return "/books/book.jsp";
 	}
 	
 	// EDIT SHOW
-	@GetMapping("/book/{id}/edit")
+	@RequestMapping("/book/{id}/edit")
 	public String bookEdit(@PathVariable("id") int id,
 			Model m, HttpSession session) {
+
 		m.addAttribute("b", serv.selectOne(id));
 		m.addAttribute("a", aserv.selectAll());
-		m.addAttribute("u", (int) session.getAttribute("id"));
+
 		return "/books/edit.jsp";
 	}
 	
@@ -84,10 +85,11 @@ public class Books {
 	@PutMapping("/book/process")
 	public String bookEditProcess(@Valid @ModelAttribute("b") Book b,
 			BindingResult result, Model m, HttpSession session) {
+
 		m.addAttribute("a", aserv.selectAll());
-		m.addAttribute("u", (int) session.getAttribute("id"));
-		System.out.println("yo");
+
 		if (result.hasErrors()) return "/books/edit.jsp";
+
 		serv.save(b);
 		return "redirect:/bookshelf";
 	}

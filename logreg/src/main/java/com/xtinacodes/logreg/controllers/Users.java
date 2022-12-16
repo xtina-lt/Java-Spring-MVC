@@ -51,7 +51,7 @@ public class Users {
 			@Valid @ModelAttribute("l") LoginUser l,
 			BindingResult result, HttpSession session) {
 		
-		// 1) save user
+		// 1) cast loginuser
 		User e = serv.login(l, result);
 		// 2) catch errors
 		if(result.hasErrors()) {
@@ -68,6 +68,13 @@ public class Users {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
+	}
+
+	// DASHBOARD
+	@GetMapping("/dashboard")
+	public String dashboard(HttpSession session){
+		if (session.getAttribute("id") == null) return "redirect:/login";
+		return "dashboard.jsp";
 	}
 	
 }

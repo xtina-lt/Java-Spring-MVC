@@ -24,11 +24,13 @@ public class User {
 	// EMAIL
 	@NotEmpty(message="Let us know how to contact you..")
 	@Size(min=2, max=100)
+	@Email(message="Let's try a valid email :) ")
 	private String email;
 	// confirm
 	@Transient
 	@NotEmpty(message="Check yourself before you wreck yourself!")
 	@Size(min=2, max=100)
+	@Email(message="Let's try a valid email :) ")
 	private String confirmE;
 	// PASSWORD
 	@NotEmpty(message="Password required yo!")

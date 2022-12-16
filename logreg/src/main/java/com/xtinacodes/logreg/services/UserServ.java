@@ -35,8 +35,8 @@ public class UserServ {
     public User register(User e, BindingResult result){
 
         // 1 ) check email
-        User r = repo.findByEmail(e.getEmail()).orElse(null);
-        if (r!=null) result.rejectValue("email", "Unique", "Let's try a different email:)");
+        User u = repo.findByEmail(e.getEmail()).orElse(null);
+        if (u!=null) result.rejectValue("email", "Unique", "Let's try a different email:)");
         // 2 ) check password
         if(!e.getPassword().equals(e.getConfirmP())) result.rejectValue("confirmP", "matches", "Let's play the matching game!");
         // 3) catch errors

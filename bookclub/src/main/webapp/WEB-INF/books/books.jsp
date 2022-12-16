@@ -4,7 +4,7 @@
 <%@ page isErrorPage="true"%>
 
 <rapid:override name="header">  
-    Welcome ${u.first}!
+    Welcome ${loggedUser.first}!
 </rapid:override>
 
 <rapid:override name="nav">  
@@ -64,10 +64,10 @@
 					${i.author.last}, ${i.author.first}
 				</td>
 				<td>
-					<c:if test="${i.user.id == u.id}">
+					<c:if test="${i.user.id == loggedUser.id}">
 					    You
 					</c:if>
-					<c:if test="${i.user.id != u.id}">
+					<c:if test="${i.user.id != loggedUser.id}">
 					    ${i.user.last}, ${i.user.first}
 					</c:if>
 				</td>

@@ -6,12 +6,12 @@
 </rapid:override>  
 
 <rapid:override name="nav">  
-	<c:if test="${sessionScope.id == null}">
+	<c:if test="${sessionScope.loggedUser == null}">
 		<a href="/logoreg">
 			Login
 		</a>
 	</c:if>
-	<c:if test="${sessionScope.id != null}">
+	<c:if test="${sessionScope.loggedUser != null}">
 		<a href="/logoreg">
 			Logout
 		</a>

@@ -5,14 +5,17 @@ public class LoginUser {
     // EMAIL
     @NotEmpty(message="Let us know how to contact you..")
     @Size(min=2, max=100)
+    @Email(message="Let's try a valid email :) ")
     private String email;
     // PASSWORD
     @NotEmpty(message="Password required yo!")
     @Size(min=8, max=255)
     private String password;
 
-    // CONSTRUCTORS
-    public LoginUser(){}
+    // // CONSTRUCTORS
+    // // only need empty constructor if you have a paramatized constructor
+    // // java auto includes empty constructor
+    // public LoginUser(){}
 
     // GETTERS
     public String getEmail(){

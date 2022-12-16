@@ -74,7 +74,7 @@
 			</form:select>
 			<!-- user id -->
 			<form:errors path="user"/>
-			<form:hidden value="${u}" path="user"/>
+			<form:hidden value="${loggedUser.id}" path="user"/>
 			<!-- submit -->
 			<input type="submit" value="Add to bookshelf!">
 		</form:form>

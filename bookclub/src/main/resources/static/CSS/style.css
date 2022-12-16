@@ -47,7 +47,7 @@ html{
             font-family: lobster;
             animation: glow 1s ease-in-out infinite alternate;
         }
-        	@-webkit-keyframes glow {
+        	@keyframes glow {
 			  from {
 			    text-shadow: 0 0 0.2vh #fff, 0 0 0.4vh #fff, 0 0 0.6vh rgb(228, 204, 255), 0 0 0.8vh rgb(228, 204, 255), 0 0 0 1vh rgb(228, 204, 255);
 			  }
@@ -153,7 +153,6 @@ a {
 
 img {
 	filter: opacity(75%);
-	mix-blend-mode: lighten;
 	max-width: 30vw;
 	max-height: 40vh;
 	animation: fadeInAnimation ease 10s;
